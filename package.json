@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "diztoba",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,5 +10,16 @@
   },
   "dependencies": {
     "astro": "^5.0.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.9",
+    "@tailwindcss/vite": "4.0.0-beta.4",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "astro-icon": "^1.1.4",
+    "prettier": "3.4.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "tailwindcss": "4.0.0-beta.4",
+    "toml": "^3.0.0"
   }
 }

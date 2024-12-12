@@ -1,0 +1,429 @@
+@import "tailwindcss";
+@plugin '@tailwindcss/forms';
+
+@theme {
+  --font-sans: "Inter Variable", Segoe UI, Tahoma, sans-serif;
+
+  --text-xxs: 0.625rem;
+  --text-xxs--line-height: calc(1.4 / 0.625);
+
+  --text-xs: 0.75rem;
+  --text-xs--line-height: calc(1 / 0.75);
+
+  --container-8xl: 86rem;
+
+  --radius-3xl: 1.25rem;
+
+  --shadow: 0px 0px 21.6px 0px rgb(0 0 0 / 0.2);
+
+  --color-dark: oklch(64.46% 0.1882 43.76); /* #e65c00 */
+  --color-dark-foreground: var(--color-white);
+
+  --color-default: oklch(
+    69.58% 0.20425909529071523 43.49103689485837
+  ); /* #ff6600 */
+  --color-default-foreground: var(--color-black);
+
+  --color-light: oklch(
+    92.71% 0.043561823020930875 54.886084252070106
+  ); /* #ffe0cc */
+  --color-light-foreground: var(--color-black);
+
+  --spacing-header: 6.125rem;
+}
+
+[data-theme="orange"] {
+  --color-dark: oklch(64.46% 0.1882 43.76); /* #e65c00 */
+  --color-default: oklch(
+    69.58% 0.20425909529071523 43.49103689485837
+  ); /* #ff6600 */
+  --color-light: oklch(
+    92.71% 0.043561823020930875 54.886084252070106
+  ); /* #ffe0cc */
+}
+
+[data-theme="purple"] {
+  --color-dark: #442993;
+  --color-default: #5756d5;
+  --color-light: #dad4e9;
+}
+
+[data-theme="green"] {
+  --color-dark: #008841;
+  --color-default: #00c637;
+  --color-light: #cceadb;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-light;
+
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /*
+    #pardot-form p {
+      @apply mb-6;
+    }
+
+    #pardot-form p.form-field {
+    }
+
+    #pardot-form p.form-field > label {
+      @apply mb-2 block text-sm font-light;
+    }
+
+    #pardot-form span.description {
+      @apply mt-2 block;
+    }
+
+    #pardot-form input[type='submit'] {
+      @apply bg-dark text-dark-foreground border-dark inline-flex cursor-pointer rounded-full border px-6 py-3 text-center font-semibold;
+    }
+    */
+  /* a {
+    color: #ff6600;
+    text-decoration: none;
+  } */
+
+  #pardot-form p.errors {
+    /* background-color:red; */
+    @apply text-red-600;
+  }
+
+  #pardot-form p.no-label {
+    /* background-color:red; */
+    @apply mb-8 text-red-600;
+    /* margin-bottom: 30px; */
+  }
+
+  #pardot-form p.form-field {
+    /* background-color:orange; */
+    /* margin-top: 30px; */
+    @apply mt-8;
+  }
+
+  #pardot-form p.form-field > label {
+    @apply mb-2 block font-semibold;
+
+    /* display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 600; */
+  }
+
+  #pardot-form p.form-field > label > inline {
+    @apply mb-3 block font-semibold;
+
+    /* display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 600;
+    background: green; */
+  }
+
+  #pardot-form > ol > li.form-field > label {
+  }
+
+  #pardot-form p.form-field > span {
+    /* background-color:yellow; */
+  }
+
+  #pardot-form span.description {
+    /* background-color:yellow; */
+    /* display: block;
+    margin-top: 5px; */
+    @apply mt-1 block;
+  }
+
+  #pardot-form p.form-field.required.error {
+    /* background-color:blue; */
+    /* margin-top: 10px; */
+    @apply mt-3;
+  }
+
+  #pardot-form p.error {
+    /* background-color:green; */
+  }
+
+  #pardot-form input[type="text"] {
+    /* background-color:pink; */
+  }
+
+  #pardot-form input[type="checkbox"] {
+    /* background-color:orange; */
+    margin: 10px;
+  }
+
+  #pardot-form input[type="radio"] {
+    /* background-color:orange; */
+    /* margin: 10px; */
+    @apply mt-3;
+  }
+
+  #pardot-form input[type="textarea"] {
+    /* background-color:green; */
+  }
+
+  #pardot-form input[type="submit"] {
+    @apply bg-dark text-dark-foreground inline-flex rounded-full border px-5 py-2 text-center font-semibold;
+
+    /*
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: inherit;
+    touch-action: manipulation;
+    appearance: none;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    height: auto;
+    line-height: 1.25;
+    overflow: hidden;
+    margin: 0;
+    padding: 9px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 0.25s;
+    transition-property: background-color, border-color, box-shadow, color;
+    transition-timing-function: ease-in-out;
+    user-select: none;
+    vertical-align: middle;
+    background-color: #ff6600;
+    color: #fff;*/
+  }
+
+  .ui-datepicker a {
+    color: #ffffff;
+  }
+
+  form.form input.date {
+    background: url(https://go.mail.awin.com/static/global/img/images/calendar.png)
+      no-repeat left;
+    background-color: #ffffff;
+    padding-left: 40px;
+    background-position: 15px;
+  }
+
+  .ui-datepicker {
+    width: 17em;
+    padding: 0.2em 0.2em 0;
+    display: none;
+  }
+
+  .ui-datepicker .ui-datepicker-header {
+    position: relative;
+    padding: 0.2em 0;
+  }
+
+  .ui-datepicker .ui-datepicker-next,
+  .ui-datepicker .ui-datepicker-prev {
+    position: absolute;
+    top: 2px;
+    width: 1.8em;
+    height: 1.8em;
+  }
+
+  .ui-datepicker .ui-datepicker-next-hover,
+  .ui-datepicker .ui-datepicker-prev-hover {
+    top: 1px;
+  }
+
+  .ui-datepicker .ui-datepicker-prev {
+    left: 2px;
+  }
+
+  .ui-datepicker .ui-datepicker-next {
+    right: 2px;
+  }
+
+  .ui-datepicker .ui-datepicker-prev-hover {
+    left: 1px;
+  }
+
+  .ui-datepicker .ui-datepicker-next-hover {
+    right: 1px;
+  }
+
+  .ui-datepicker .ui-datepicker-next span,
+  .ui-datepicker .ui-datepicker-prev span {
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -8px;
+    top: 50%;
+    margin-top: -8px;
+  }
+
+  .ui-datepicker .ui-datepicker-title {
+    margin: 0 2.3em;
+    line-height: 1.8em;
+    text-align: center;
+  }
+
+  .ui-datepicker .ui-datepicker-title select {
+    font-size: 1em;
+    margin: 1px 0;
+  }
+
+  .ui-datepicker select.ui-datepicker-month,
+  .ui-datepicker select.ui-datepicker-year {
+    width: 45%;
+  }
+
+  .ui-datepicker table {
+    width: 100%;
+    font-size: 0.9em;
+    border-collapse: collapse;
+    margin: 0 0 0.4em;
+    background-color: #ff6600;
+  }
+
+  .ui-datepicker th {
+    padding: 0.7em 0.3em;
+    text-align: center;
+    font-weight: 700;
+    border: 0;
+  }
+
+  .ui-datepicker td {
+    border: 0;
+    padding: 1px;
+  }
+
+  .ui-datepicker td a,
+  .ui-datepicker td span {
+    display: block;
+    padding: 0.2em;
+    text-align: right;
+    text-decoration: none;
+  }
+
+  .ui-datepicker .ui-datepicker-buttonpane {
+    background-image: none;
+    margin: 0.7em 0 0 0;
+    padding: 0 0.2em;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .ui-datepicker .ui-datepicker-buttonpane button {
+    float: right;
+    margin: 0.5em 0.2em 0.4em;
+    cursor: pointer;
+    padding: 0.2em 0.6em 0.3em 0.6em;
+    width: auto;
+    overflow: visible;
+  }
+
+  .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+    float: left;
+  }
+
+  .ui-datepicker.ui-datepicker-multi {
+    width: auto;
+  }
+
+  .ui-datepicker-multi .ui-datepicker-group {
+    float: left;
+  }
+
+  .ui-datepicker-multi .ui-datepicker-group table {
+    width: 95%;
+    margin: 0 auto 0.4em;
+  }
+
+  .ui-datepicker-multi-2 .ui-datepicker-group {
+    width: 50%;
+  }
+
+  .ui-datepicker-multi-3 .ui-datepicker-group {
+    width: 33.3%;
+  }
+
+  .ui-datepicker-multi-4 .ui-datepicker-group {
+    width: 25%;
+  }
+
+  .ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header,
+  .ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header {
+    border-left-width: 0;
+  }
+
+  .ui-datepicker-multi .ui-datepicker-buttonpane {
+    clear: left;
+  }
+
+  .ui-datepicker-row-break {
+    clear: both;
+    width: 100%;
+    font-size: 0;
+  }
+
+  .ui-datepicker-rtl {
+    direction: rtl;
+  }
+
+  .ui-datepicker-rtl .ui-datepicker-prev {
+    right: 2px;
+    left: auto;
+  }
+
+  .ui-datepicker-rtl .ui-datepicker-next {
+    left: 2px;
+    right: auto;
+  }
+
+  .ui-datepicker-rtl .ui-datepicker-prev:hover {
+    right: 1px;
+    left: auto;
+  }
+
+  .ui-datepicker-rtl .ui-datepicker-next:hover {
+    left: 1px;
+    right: auto;
+  }
+
+  .ui-datepicker-rtl .ui-datepicker-buttonpane {
+    clear: right;
+  }
+
+  .ui-datepicker-rtl .ui-datepicker-buttonpane button {
+    float: left;
+  }
+
+  .ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current,
+  .ui-datepicker-rtl .ui-datepicker-group {
+    float: right;
+  }
+
+  .ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header,
+  .ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header {
+    border-right-width: 0;
+    border-left-width: 1px;
+  }
+
+  .ui-datepicker .ui-icon {
+    display: block;
+    text-indent: -99999px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    left: 0.5em;
+    top: 0.3em;
+  }
+}

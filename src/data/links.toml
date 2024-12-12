@@ -1,0 +1,41 @@
+[[links]]
+id = 'vimeo'
+icon = 'ear'
+name = 'Vimeo'
+url = 'https://vimeo.com'
+
+[[links]]
+id = 'twitter'
+icon = 'ear'
+name = 'Twitter'
+url = 'https://twitter.com'
+
+[[links]]
+id = 'facebook'
+icon = 'ear'
+name = 'Facebook'
+url = 'https://facebook.com'
+
+[[links]]
+id = 'instagram'
+icon = 'ear'
+name = 'Instagram'
+url = 'https://instagram.com'
+
+[[links]]
+id = 'youtube'
+icon = 'ear'
+name = 'YouTube'
+url = 'https://youtube.com'
+
+# [[links]]
+# id = 'bandcamp'
+# icon = 'ear'
+# name = 'Bandcamp'
+# url = 'https://bandcamp.com'
+
+[[links]]
+id = 'soundcloud'
+icon = 'ear'
+name = 'Soundcloud'
+url = 'https://soundcloud.com'
