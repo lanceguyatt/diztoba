@@ -1,0 +1,31 @@
+---
+// import { Icon } from "astro-icon/components";
+
+import { getCollection } from 'astro:content'
+
+const allLinks = await getCollection('links')
+---
+
+<nav class="grid min-h-screen grid-cols-2 gap-8 md:grid-cols-4">
+  {
+    allLinks.map((link) => (
+      <a
+        href={link.data.url}
+        target="_blank"
+        class:list={[
+          'grid place-content-center outline-0 transition-transform',
+          'hover:scale-110 focus:scale-110',
+        ]}
+      >
+        {link.data.image && (
+          <img
+            src={`/images/${link.data.image}`}
+            alt=""
+            loading="eager"
+            class="h-full w-full object-cover object-center"
+          />
+        )}
+      </a>
+    ))
+  }
+</nav>

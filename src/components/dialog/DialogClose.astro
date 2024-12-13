@@ -1,0 +1,32 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { Icon } from 'astro-icon/components'
+
+import { cn } from '@/utils'
+
+interface Props extends HTMLAttributes<'div'> {}
+---
+
+<button
+  x-on:click="$dialog.close()"
+  type="button"
+  aria-label={`Close modal`}
+  data-component="dialog-close"
+  class:list={cn(
+    'fixed top-3 right-3 z-50 grid h-8 w-8 place-items-center rounded-full lg:absolute lg:top-10 lg:-right-14',
+  )}
+>
+  <span
+    class="bg-background shadow-foo shadow-foreground/15 grid h-8 w-8 place-items-center rounded-full"
+  >
+    <Icon name="cross" size={10} />
+  </span>
+</button>
+<!--
+<style is:global>
+  [data-component='dialog-close'] {
+    &:focus {
+      box-shadow: 0 0 3pt 2pt cornflowerblue;
+    }
+  }
+</style> -->

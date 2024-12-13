@@ -1,41 +1,90 @@
 [[links]]
 id = 'vimeo'
-icon = 'ear'
 name = 'Vimeo'
+image = 'eye.png'
 url = 'https://vimeo.com'
 
 [[links]]
-id = 'twitter'
-icon = 'ear'
-name = 'Twitter'
-url = 'https://twitter.com'
+id = 'spotify'
+name = 'Spotify'
+url = 'https://spotify.com'
+image = 'deaf.png'
 
 [[links]]
-id = 'facebook'
-icon = 'ear'
-name = 'Facebook'
-url = 'https://facebook.com'
+id = 'comment'
+name = 'Comment'
+url = '#'
+image = 'speech-bubble.png'
+
+[[links]]
+id = 'merch'
+name = 'Merch'
+url = '#'
+image = 't-shirt.png'
+
+[[links]]
+id = 'message'
+name = 'Message'
+url = '#'
+image = 'email.png'
+
+[[links]]
+id = 'donate'
+name = 'Donate'
+url = '#'
+image = 'heart.png'
+
+[[links]]
+id = 'music-store'
+name = 'Music Store'
+url = '#'
+image = 'vinyl.png'
+
+[[links]]
+id = 'events'
+name = 'Events'
+url = '#'
+image = 'calendar.png'
 
 [[links]]
 id = 'instagram'
-icon = 'ear'
 name = 'Instagram'
-url = 'https://instagram.com'
+url = 'https://www.instagram.com/diztoba/'
+image = 'instagram.png'
+
+[[links]]
+id = 'facebook'
+name = 'Facebook'
+url = 'https://facebook.com'
+image = 'facebook.png'
+
+[[links]]
+id = 'twitter'
+name = 'Twitter'
+url = 'https://twitter.com'
+image = 'twitter.png'
 
 [[links]]
 id = 'youtube'
-icon = 'ear'
 name = 'YouTube'
-url = 'https://youtube.com'
+url = 'https://www.youtube.com/@diztoba'
+image = 'youtube.png'
 
 # [[links]]
 # id = 'bandcamp'
-# icon = 'ear'
 # name = 'Bandcamp'
 # url = 'https://bandcamp.com'
+# image = 'bandcamp.png'
 
 [[links]]
 id = 'soundcloud'
-icon = 'ear'
 name = 'Soundcloud'
-url = 'https://soundcloud.com'
+url = 'https://soundcloud.com/diztoba'
+image = 'soundcloud.png'
+
+# Speech Bubble - Comment
+# T- Shirt - Merch
+# Envelope - Message
+# Heart/Hand - Donate
+# Calendar - Events
+# Vinyl Record - Music store

@@ -1,12 +1,16 @@
-import { defineConfig } from "astro/config";
-import tailwindcss from "@tailwindcss/vite";
-import icon from "astro-icon";
+import alpine from '@astrojs/alpinejs'
+import tailwindcss from '@tailwindcss/vite'
+import icon from 'astro-icon'
+import { defineConfig } from 'astro/config'
 
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
   integrations: [
+    alpine({
+      entrypoint: '/src/scripts/app',
+    }),
     icon({
       // include: {
       //   // Include only three `mdi` icons in the bundle
@@ -44,4 +48,4 @@ export default defineConfig({
   //     },
   //   },
   // },
-});
+})

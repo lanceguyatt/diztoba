@@ -1,34 +1,49 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { Icon } from "astro-icon/components";
-
-import { getCollection } from "astro:content";
-
-const allLinks = await getCollection("links");
+import Layout from '@/layouts/Layout.astro'
+import Links from '@/components/Links.astro'
+import Dialog from '@/components/dialog/Dialog.astro'
+import DialogPanel from '@/components/dialog/DialogPanel.astro'
+import DialogOverlay from '@/components/dialog/DialogOverlay.astro'
 ---
 
 <Layout>
-  <main>
+  <main x-data="app">
     <article>
       <div class="container mx-auto">
         <h1 class="sr-only">Diz Toba</h1>
-        <nav class="grid min-h-screen gap-8 grid-cols-2 md:grid-cols-3">
-          {
-            allLinks.map((link) => (
-              <a
-                href={link.data.url}
-                target="_blank"
-                class:list={[
-                  "grid place-content-center transition-transform outline-0",
-                  "focus:scale-110 hover:scale-110",
-                ]}
-              >
-                <Icon name={link.data.icon} class="w-80 h-80 text-current" />
-              </a>
-            ))
-          }
-        </nav>
+        <Links />
       </div>
     </article>
+    <template x-teleport="body">
+      <Dialog x-model="show">
+        <DialogOverlay />
+        <div class="relative flex min-h-screen items-center justify-center p-6">
+          <DialogPanel>
+            <div
+              class="rounded-20 relative w-80 flex-none bg-white p-10 md:w-160"
+            >
+              <form @submit.prevent="submitForm">
+                <fieldset>
+                  <legend x-dialog:title class="sr-only">Sign up</legend>
+                  <div class="grid grid-cols-[1fr_auto]">
+                    <label for="email" class="sr-only">Your email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      x-model="formData.email"
+                      required
+                      placeholder="Enter your email address"
+                      class="w-full"
+                    />
+                    <button type="submit">Submit</button>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </DialogPanel>
+        </div>
+      </Dialog>
+    </template>
   </main>
 </Layout>

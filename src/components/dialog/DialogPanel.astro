@@ -1,0 +1,21 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {}
+
+const { class: className, ...props } = Astro.props
+---
+
+<div
+  x-dialog:panel
+  x-transition:enter="transition ease-in duration-300"
+  x-transition:enter-start="opacity-0"
+  x-transition:enter-end="opacity-100"
+  x-transition:leave="transition ease-in duration-300"
+  x-transition:leave-start="opacity-100"
+  x-transition:leave-end="opacity-0"
+  class:list={[className]}
+  {...props}
+>
+  <slot />
+</div>

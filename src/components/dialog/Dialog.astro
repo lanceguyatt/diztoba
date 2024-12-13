@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { cn } from '@/utils/index'
+
+interface Props extends HTMLAttributes<'div'> {}
+
+const { class: className, ...props } = Astro.props
+---
+
+<div
+  x-dialog
+  style="display: none;"
+  class:list={[cn('fixed inset-0 z-10', className)]}
+  {...props}
+>
+  <slot />
+</div>
