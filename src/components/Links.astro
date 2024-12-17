@@ -6,7 +6,7 @@ import { getCollection } from 'astro:content'
 const allLinks = await getCollection('links')
 ---
 
-<nav class="grid min-h-screen grid-cols-2 gap-8 md:grid-cols-4">
+<nav class="grid grid-cols-4 gap-6">
   {
     allLinks.map((link) => (
       <a
@@ -29,3 +29,10 @@ const allLinks = await getCollection('links')
     ))
   }
 </nav>
+
+<style>
+  a {
+    width: 20vw;
+    height: auto;
+  }
+</style>

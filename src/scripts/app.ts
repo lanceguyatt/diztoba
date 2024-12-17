@@ -6,7 +6,7 @@ import { type Alpine } from 'alpinejs'
 function App() {
   return {
     show: true,
-    signedUp: this.$persist(0).as(false),
+    signedUp: this.$persist(false),
     formData: {
       email: '',
     },
@@ -16,7 +16,8 @@ function App() {
       console.log(JSON.stringify(this.formData))
     },
     init() {
-      console.log('APP')
+      console.log(`signedUp`, this.signedUp)
+      // if this.signedUp.
     },
   }
 }
@@ -30,5 +31,7 @@ export default (Alpine: Alpine) => {
   Alpine.data('app', App)
   // Alpine.store('darkMode', darkmode)
 }
+
+// window.App = App
 
 // action="https://formspree.io/f/mrbgvvkq" method="POST"

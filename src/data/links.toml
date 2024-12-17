@@ -7,8 +7,14 @@ url = 'https://vimeo.com'
 [[links]]
 id = 'spotify'
 name = 'Spotify'
-url = 'https://spotify.com'
+url = 'https://open.spotify.com/user/31yv6cm66nebsp7uwmwih6ywm4lm?si=23a456b8dd0e46d1'
 image = 'deaf.png'
+
+[[links]]
+id = 'spotify2'
+name = 'Spotify2'
+url = 'https://open.spotify.com/user/31yv6cm66nebsp7uwmwih6ywm4lm?si=23a456b8dd0e46d1'
+image = 'spotify.png'
 
 [[links]]
 id = 'comment'
@@ -17,15 +23,15 @@ url = '#'
 image = 'speech-bubble.png'
 
 [[links]]
-id = 'merch'
-name = 'Merch'
+id = 'merch-store'
+name = 'Merch store'
 url = '#'
 image = 't-shirt.png'
 
 [[links]]
 id = 'message'
 name = 'Message'
-url = '#'
+url = 'mailto:diztoba@gmail.com'
 image = 'email.png'
 
 [[links]]
@@ -35,8 +41,14 @@ url = '#'
 image = 'heart.png'
 
 [[links]]
-id = 'music-store'
-name = 'Music Store'
+id = 'patreon'
+name = 'Patreon'
+url = 'https://patreon'
+image = 'patreon.png'
+
+[[links]]
+id = 'record-store'
+name = 'Record Store'
 url = '#'
 image = 'vinyl.png'
 
@@ -55,7 +67,7 @@ image = 'instagram.png'
 [[links]]
 id = 'facebook'
 name = 'Facebook'
-url = 'https://facebook.com'
+url = 'https://www.facebook.com/diz.toba'
 image = 'facebook.png'
 
 [[links]]
@@ -70,21 +82,14 @@ name = 'YouTube'
 url = 'https://www.youtube.com/@diztoba'
 image = 'youtube.png'
 
-# [[links]]
-# id = 'bandcamp'
-# name = 'Bandcamp'
-# url = 'https://bandcamp.com'
-# image = 'bandcamp.png'
+[[links]]
+id = 'bandcamp'
+name = 'Bandcamp'
+url = 'https://bandcamp.com'
+image = 'bandcamp.png'
 
 [[links]]
 id = 'soundcloud'
 name = 'Soundcloud'
 url = 'https://soundcloud.com/diztoba'
 image = 'soundcloud.png'
-
-# Speech Bubble - Comment
-# T- Shirt - Merch
-# Envelope - Message
-# Heart/Hand - Donate
-# Calendar - Events
-# Vinyl Record - Music store
