@@ -1,0 +1,17 @@
+---
+
+---
+
+<div class:list={['wrapper', 'max-w-8xl mx-auto w-full']}>
+  <slot />
+</div>
+
+<style>
+  /* 1.5rem(24px) @ 20rem(320px) increasing to 2rem(32px) @ 86rem(1376px) */
+  .wrapper {
+    padding-inline: clamp(2rem, calc(1.5rem + ((1vw - 0.2rem) * 0.7576)), 4rem);
+    /* Where: 0.7576 = 100 * font-size_difference / viewport_width_difference */
+    /* Safari resize fix */
+    min-height: 0vw;
+  }
+</style>

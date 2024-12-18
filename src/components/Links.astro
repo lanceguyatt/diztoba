@@ -1,38 +1,47 @@
 ---
 // import { Icon } from "astro-icon/components";
+import Wrapper from '@/components/Wrapper.astro'
 
 import { getCollection } from 'astro:content'
 
 const allLinks = await getCollection('links')
 ---
 
-<nav class="grid grid-cols-4 gap-6">
-  {
-    allLinks.map((link) => (
-      <a
-        href={link.data.url}
-        target="_blank"
-        class:list={[
-          'grid place-content-center outline-0 transition-transform',
-          'hover:scale-110 focus:scale-110',
-        ]}
-      >
-        {link.data.image && (
-          <img
-            src={`/images/${link.data.image}`}
-            alt=""
-            loading="eager"
-            class="h-full w-full object-cover object-center"
-          />
-        )}
-      </a>
-    ))
-  }
-</nav>
+<div
+  class="fixed inset-0 grid h-screen w-screen place-items-center overflow-hidden"
+>
+  <div class="absolute inset-0 z-10 grid items-center">
+    <Wrapper>
+      <nav class="grid grid-cols-4 gap-8">
+        {
+          allLinks.map((link) => (
+            <a
+              href={link.data.url}
+              target="_blank"
+              class:list={[
+                'grid place-content-center outline-0 transition-transform',
+                'hover:scale-110 focus:scale-110',
+              ]}
+            >
+              {link.data.image && (
+                <img
+                  src={`/images/${link.data.image}`}
+                  alt=""
+                  loading="eager"
+                  class="h-full w-full object-cover object-center invert-100"
+                />
+              )}
+            </a>
+          ))
+        }
+      </nav>
+    </Wrapper>
+  </div>
 
-<style>
-  a {
-    width: 20vw;
-    height: auto;
-  }
-</style>
+  <iframe
+    src="https://player.vimeo.com/video/1040427280?badge=0&controls=0&autoplay=1&muted=1&autopause=0&player_id=0&app_id=58479"
+    allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+    title="Radial Light"
+    class="absolute top-1/2 left-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-250"
+  ></iframe>
+</div>

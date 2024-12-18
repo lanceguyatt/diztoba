@@ -7,12 +7,10 @@ import DialogOverlay from '@/components/dialog/DialogOverlay.astro'
 ---
 
 <Layout>
-  <main x-data="app">
+  <main x-data="app" class="absolute inset-0 z-10">
     <article>
-      <div class="container mx-auto">
-        <h1 class="sr-only">Diz Toba</h1>
-        <Links />
-      </div>
+      <h1 class="sr-only">Diz Toba</h1>
+      <Links />
     </article>
     <template x-teleport="body">
       <Dialog x-model="show">
@@ -36,7 +34,9 @@ import DialogOverlay from '@/components/dialog/DialogOverlay.astro'
                       placeholder="Enter your email address"
                       class="w-full"
                     />
-                    <button type="submit" class="bg-dark text-white p-4">Submit</button>
+                    <button type="submit" class="bg-dark p-4 text-white"
+                      >Submit</button
+                    >
                   </div>
                 </fieldset>
               </form>
