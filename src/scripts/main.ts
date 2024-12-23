@@ -10,10 +10,33 @@ function App() {
     formData: {
       email: '',
     },
-    submitForm() {
+    async submitForm() {
       this.signUpForm = false
+
+      const formElement = document.getElementById('contact')
+      const body = new URLSearchParams(new FormData(formElement)).toString()
+
+      console.log('body', body)
+
+      return fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: body,
+      })
+        .then((response) => {
+          if (response.ok) {
+            formElement?.reset()
+            console.log('Thank you for your message!')
+            this.userSignedUp = this.$persist(true)
+          } else {
+            throw new Error(`Something went wrong: ${response.statusText}`)
+          }
+        })
+        .catch((error) => console.error(error))
+
       // console.log(JSON.stringify(this.formData))
-      this.userSignedUp = this.$persist(true)
     },
     init() {
       console.log('this.userSignedUp', this.userSignedUp)

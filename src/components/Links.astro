@@ -10,9 +10,9 @@ const allLinks = await getCollection('links')
 <div
   class="fixed inset-0 grid h-screen w-screen place-items-center overflow-hidden"
 >
-  <div class="absolute inset-0 z-10 grid items-center">
-    <Wrapper>
-      <nav class="grid grid-cols-4 gap-8">
+  <div class="absolute inset-0 z-10 grid place-items-center">
+    <div class="mx-auto w-full max-w-lg px-4">
+      <nav class="grid grid-cols-4 gap-4">
         {
           allLinks.map(({ data }) => (
             <a
@@ -29,7 +29,7 @@ const allLinks = await getCollection('links')
           ))
         }
       </nav>
-    </Wrapper>
+    </div>
   </div>
 
   <iframe
