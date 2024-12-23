@@ -3,7 +3,7 @@
 ---
 
 <div class="relative w-80 flex-none bg-white p-4 md:w-160">
-  <form @submit.prevent="submitForm">
+  <form @submit.prevent="submitForm" name="signup" netlify>
     <fieldset class="grid gap-4 sm:grid-cols-[1fr_auto]">
       <h2 x-dialog:title class="text-center font-semibold sm:col-span-2">
         Sign up for updates
@@ -21,7 +21,7 @@
         placeholder="Enter your email address"
         class="w-full"
       />
-      <button type="submit" class="bg-black p-4 text-white">Submit</button>
+      <button type="submit" class="bg-black p-4 text-white">Sign up</button>
     </fieldset>
   </form>
 </div>

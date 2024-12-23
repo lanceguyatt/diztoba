@@ -18,10 +18,7 @@ const allLinks = await getCollection('links')
             <a
               href={data.url}
               target="_blank"
-              class:list={[
-                'outline-0 transition-transform',
-                'hover:scale-110 focus:scale-110',
-              ]}
+              class:list={['outline-0']}
               title={data.name}
             >
               <div class="aspect-square">
