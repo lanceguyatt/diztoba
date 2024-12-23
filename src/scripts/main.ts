@@ -5,7 +5,7 @@ import { type Alpine } from 'alpinejs'
 
 function App() {
   return {
-    show: false,
+    show: true,
     signedUp: this.$persist(false),
     formData: {
       email: '',

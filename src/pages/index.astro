@@ -4,6 +4,7 @@ import Links from '@/components/Links.astro'
 import Dialog from '@/components/dialog/Dialog.astro'
 import DialogPanel from '@/components/dialog/DialogPanel.astro'
 import DialogOverlay from '@/components/dialog/DialogOverlay.astro'
+import SignUpForm from '@/components/SignUpForm.astro'
 ---
 
 <Layout>
@@ -12,35 +13,12 @@ import DialogOverlay from '@/components/dialog/DialogOverlay.astro'
       <h1 class="sr-only">Diz Toba</h1>
       <Links />
     </article>
-    <template x-teleport="body">
-      <Dialog x-model="show">
+    <template x-if="show">
+      <Dialog static :initial-focus="$refs.email">
         <DialogOverlay />
         <div class="relative flex min-h-screen items-center justify-center p-6">
           <DialogPanel>
-            <div
-              class="rounded-20 relative w-80 flex-none bg-white p-10 md:w-160"
-            >
-              <form @submit.prevent="submitForm">
-                <fieldset>
-                  <legend x-dialog:title class="sr-only">Sign up</legend>
-                  <div class="grid grid-cols-[1fr_auto]">
-                    <label for="email" class="sr-only">Your email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      x-model="formData.email"
-                      required
-                      placeholder="Enter your email address"
-                      class="w-full"
-                    />
-                    <button type="submit" class="bg-dark p-4 text-white"
-                      >Submit</button
-                    >
-                  </div>
-                </fieldset>
-              </form>
-            </div>
+            <SignUpForm />
           </DialogPanel>
         </div>
       </Dialog>

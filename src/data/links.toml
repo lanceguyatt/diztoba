@@ -3,93 +3,109 @@ id = 'spotify'
 name = 'Spotify'
 url = 'https://open.spotify.com/user/31yv6cm66nebsp7uwmwih6ywm4lm?si=23a456b8dd0e46d1'
 image = 'deaf.png'
+icon = 'listen'
 
 [[links]]
 id = 'vimeo'
 name = 'Vimeo'
-image = 'eye.png'
 url = 'https://vimeo.com'
+image = 'eye.png'
+icon = 'eye'
 
 [[links]]
 id = 'comment'
 name = 'Comment'
 url = '#'
 image = 'speech-bubble.png'
+icon = 'comment'
 
 [[links]]
 id = 'message'
 name = 'Message'
 url = 'mailto:diztoba@gmail.com'
 image = 'email.png'
+icon = 'mail'
 
 [[links]]
 id = 'record-store'
 name = 'Record Store'
 url = '#'
 image = 'vinyl.png'
+icon = 'vinyl'
 
 [[links]]
 id = 'merch-store'
 name = 'Merch store'
 url = '#'
 image = 't-shirt.png'
+icon = 'tshirt'
 
 [[links]]
 id = 'donate'
 name = 'Donate'
 url = '#'
 image = 'heart.png'
+icon = 'donate'
 
 [[links]]
 id = 'events'
 name = 'Events'
 url = '#'
 image = 'calendar.png'
+icon = 'calendar'
 
 [[links]]
 id = 'instagram'
 name = 'Instagram'
 url = 'https://www.instagram.com/diztoba/'
 image = 'instagram.png'
+icon = 'instagram'
 
 [[links]]
 id = 'youtube'
 name = 'YouTube'
 url = 'https://www.youtube.com/@diztoba'
 image = 'youtube.png'
+icon = 'youtube'
 
 [[links]]
 id = 'facebook'
 name = 'Facebook'
 url = 'https://www.facebook.com/diz.toba'
 image = 'facebook.png'
+icon = 'facebook'
 
 [[links]]
 id = 'twitter'
 name = 'Twitter'
 url = 'https://twitter.com'
 image = 'twitter.png'
+icon = 'twitter'
 
 [[links]]
 id = 'spotify2'
 name = 'Spotify2'
 url = 'https://open.spotify.com/user/31yv6cm66nebsp7uwmwih6ywm4lm?si=23a456b8dd0e46d1'
 image = 'spotify.png'
+icon = 'spotify'
 
 [[links]]
 id = 'soundcloud'
 name = 'Soundcloud'
 url = 'https://soundcloud.com/diztoba'
 image = 'soundcloud.png'
+icon = 'soundcloud'
 
 [[links]]
 id = 'bandcamp'
 name = 'Bandcamp'
 url = 'https://bandcamp.com'
 image = 'bandcamp.png'
+icon = 'bandcamp'
 
 [[links]]
 id = 'patreon'
 name = 'Patreon'
 url = 'https://patreon'
 image = 'patreon.png'
+icon = 'patreon'

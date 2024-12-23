@@ -2,14 +2,18 @@
 import type { HTMLAttributes } from 'astro/types'
 import { cn } from '@/utils/index'
 
-interface Props extends HTMLAttributes<'div'> {}
+interface Props extends HTMLAttributes<'div'> {
+  model: string
+  static: boolean
+}
 
-const { class: className, ...props } = Astro.props
+const { model, class: className, ...props } = Astro.props
 ---
 
 <div
   x-dialog
-  style="display: none;"
+  x-model={model}
+  x-cloak
   class:list={[cn('fixed inset-0 z-10', className)]}
   {...props}
 >

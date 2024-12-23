@@ -9,7 +9,7 @@ export default defineConfig({
   },
   integrations: [
     alpine({
-      entrypoint: '/src/scripts/app',
+      entrypoint: '/src/scripts/main',
     }),
     icon({
       // include: {
