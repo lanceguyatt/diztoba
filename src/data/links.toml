@@ -106,6 +106,6 @@ icon = 'bandcamp'
 [[links]]
 id = 'patreon'
 name = 'Patreon'
-url = 'https://patreon'
+url = 'https://patreon.com'
 image = 'patreon.png'
 icon = 'patreon'

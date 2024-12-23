@@ -13,7 +13,7 @@ import SignUpForm from '@/components/SignUpForm.astro'
       <h1 class="sr-only">Diz Toba</h1>
       <Links />
     </article>
-    <template x-if="show">
+    <template x-if="signUpForm">
       <Dialog static :initial-focus="$refs.email">
         <DialogOverlay />
         <div class="relative flex min-h-screen items-center justify-center p-6">

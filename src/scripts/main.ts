@@ -1,37 +1,39 @@
 import focus from '@alpinejs/focus'
 import persist from '@alpinejs/persist'
 import ui from '@alpinejs/ui'
-import { type Alpine } from 'alpinejs'
+import { type Alpine as A } from 'alpinejs'
 
 function App() {
   return {
-    show: true,
-    signedUp: this.$persist(false),
+    signUpForm: true,
+    userSignedUp: this.$persist(false),
     formData: {
       email: '',
     },
     submitForm() {
-      this.show = false
-      this.signedUp = this.$persist(1).as(true)
-      console.log(JSON.stringify(this.formData))
+      this.signUpForm = false
+      // console.log(JSON.stringify(this.formData))
+      this.userSignedUp = this.$persist(true)
     },
     init() {
-      console.log(`signedUp`, this.signedUp)
-      // if this.signedUp.
+      console.log('this.userSignedUp', this.userSignedUp)
+      const userSignedUp = JSON.parse(localStorage.getItem('_x_userSignedUp'))
+
+      if (userSignedUp?.initialValue) {
+        this.signUpForm = false
+        console.log('userSignedUp', userSignedUp.initialValue)
+      }
     },
   }
 }
 
-export default (Alpine: Alpine) => {
+export default (Alpine: A) => {
   Alpine.plugin(focus)
   Alpine.plugin(ui)
   Alpine.plugin(persist)
-
-  console.log('XD')
   Alpine.data('app', App)
-  // Alpine.store('darkMode', darkmode)
 }
 
-// window.App = App
+// window.Alpine = Alpine
 
 // action="https://formspree.io/f/mrbgvvkq" method="POST"
