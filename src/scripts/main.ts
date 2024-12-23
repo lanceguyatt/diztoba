@@ -10,10 +10,8 @@ function App() {
     formData: {
       email: '',
     },
-    async submitForm() {
-      this.signUpForm = false
-
-      const formElement = document.getElementById('contact')
+    async submitSignUpForm() {
+      const formElement = document.getElementById('signUp')
       const body = new URLSearchParams(new FormData(formElement)).toString()
 
       console.log('body', body)
@@ -27,16 +25,16 @@ function App() {
       })
         .then((response) => {
           if (response.ok) {
+            console.log(JSON.stringify('response', response))
             formElement?.reset()
-            console.log('Thank you for your message!')
+            console.log('Thank you for signing up')
             this.userSignedUp = this.$persist(true)
+            this.signUpForm = false
           } else {
             throw new Error(`Something went wrong: ${response.statusText}`)
           }
         })
         .catch((error) => console.error(error))
-
-      // console.log(JSON.stringify(this.formData))
     },
     init() {
       console.log('this.userSignedUp', this.userSignedUp)

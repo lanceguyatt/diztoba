@@ -5,15 +5,14 @@
 <div class="relative w-80 flex-none bg-white p-4 md:w-160">
   <form
     hidden
-    name="contact"
+    name="signUp"
     method="post"
     data-netlify="true"
     netlify-honeypot="bot-field"
-    data-netlify-recaptcha="true"
   >
     <label><input type="email" name="email" /></label>
   </form>
-  <form x-on:submit.prevent="submitForm" id="contact">
+  <form x-on:submit.prevent="submitSignUpForm" id="signUp">
     <fieldset class="grid gap-4 sm:grid-cols-[1fr_auto]">
       <h2 x-dialog:title class="text-center font-semibold sm:col-span-2">
         Sign up for updates
@@ -22,7 +21,8 @@
       <p hidden>
         <label>ignore: <input name="bot-field" /></label>
       </p>
-      <input type="hidden" name="form-name" value="contact" />
+
+      <input type="hidden" name="form-name" value="signUp" />
 
       <label for="email" class="sr-only">Your email</label>
 
@@ -36,7 +36,6 @@
         placeholder="Enter your email address"
         class="w-full"
       />
-      <div data-netlify-recaptcha="true"></div>
 
       <button type="submit" class="bg-black p-4 text-white">Sign up</button>
     </fieldset>
