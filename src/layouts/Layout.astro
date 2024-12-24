@@ -25,16 +25,17 @@ import '@/styles/main.css'
         creator: '@dtoba',
       }}
       extend={{
-        // extending the default link tags
-        link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
-        // extending the default meta tags
+        link: [
+          { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+          { rel: 'author', type: 'text/plain', href: '/humans.txt' },
+        ],
         meta: [
           {
             name: 'twitter:image',
             content: site.image.secure_url,
           },
           { name: 'twitter:title', content: site.name },
-          // { name: 'twitter:description', content: 'Agent' },
+          { name: 'twitter:description', content: site.description },
         ],
       }}
     />

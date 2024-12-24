@@ -1,0 +1,24 @@
+/* TEAM */
+
+Name: Lance Guyatt
+Role: Web Developer
+Site: https://lanceguyatt.com
+Email: lance [at] lanceguyatt.com
+Location: London, United Kingdom
+
+/* SITE */
+
+Language: English
+Doctype: HTML5
+Standards: HTML5, CSS4, ES6
+Components: Astro JS, Alpine JS, Tailwind CSS 4
+Software: Zen Preview
+
+/* THANKS */
+
+What is this file about?: humanstxt.org
+
+**************************************************************
+| "I am not the kind of person to say atoadaso, but you know |
+| what, atoadaso, I fucking atoadaso!" Ricky [TPB]           |
+ *************************************************************

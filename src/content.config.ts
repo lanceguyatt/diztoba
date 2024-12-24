@@ -1,4 +1,4 @@
-import { file, glob } from 'astro/loaders'
+import { file } from 'astro/loaders'
 import { defineCollection, z } from 'astro:content'
 import { parse as parseToml } from 'toml'
 

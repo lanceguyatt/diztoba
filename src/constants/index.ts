@@ -10,7 +10,7 @@ export const siteSchema = z.object({
 
 export const site = siteSchema.parse({
   name: 'Diz Toba',
-  description: 'Diz Toba description',
+  description: 'Diz Toba website',
   image: {
     secure_url: 'https://diztoba.com/images/logo.png',
   },
