@@ -12,8 +12,9 @@ export const siteSchema = z.object({
 })
 
 export const site = siteSchema.parse({
-  name: 'Diz Toba',
-  description: 'Diz Toba website',
+  name: 'Diz Toba | London-Based Songwriter, Musician & Film Production Expert',
+  description:
+    'Discover Diz Toba, a versatile London-based songwriter, performer, and musician offering a wide range of creative services. Explore his unique blend of music, performance, and film & media production expertise.',
   url: BASE_URL,
   image: {
     secure_url: 'https://diztoba.com/images/logo.jpg',
