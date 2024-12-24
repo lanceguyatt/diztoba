@@ -1,7 +1,4 @@
 ---
-// import { Icon } from 'astro-icon/components'
-// import Wrapper from '@/components/Wrapper.astro'
-
 import { getCollection } from 'astro:content'
 
 const allLinks = await getCollection('links')
@@ -12,33 +9,36 @@ const allLinks = await getCollection('links')
 >
   <div class="absolute inset-0 z-10 grid place-items-center">
     <div class="mx-auto w-full max-w-lg px-4">
-      <nav class="grid grid-cols-4 gap-4">
-        {
-          allLinks.map(({ data }) => {
-            const { name, url, image } = data
-            return (
-              <a
-                href={url}
-                target="_blank"
-                class:list={['outline-0']}
-                title={name}
-              >
-                <div class="aspect-square">
-                  <div class="sr-only">{name}</div>
-                  <img
-                    src={`/images/${image}`}
-                    width={512}
-                    height={512}
-                    alt={`${name} logo`}
-                    class="h-full w-full"
-                    loading="eager"
-                  />
-                </div>
-              </a>
-            )
-          })
-        }
-      </nav>
+      <article>
+        <h1 class="sr-only">Diz Toba</h1>
+        <nav class="grid grid-cols-4 gap-4">
+          {
+            allLinks.map(({ data }) => {
+              const { name, url, image } = data
+              return (
+                <a
+                  href={url}
+                  target="_blank"
+                  class:list={['outline-0']}
+                  title={name}
+                >
+                  <div class="aspect-square">
+                    <div class="sr-only">{name}</div>
+                    <img
+                      src={`/images/links/${image}`}
+                      width={512}
+                      height={512}
+                      alt={`${name} logo`}
+                      class="h-full w-full"
+                      loading="eager"
+                    />
+                  </div>
+                </a>
+              )
+            })
+          }
+        </nav>
+      </article>
     </div>
   </div>
 

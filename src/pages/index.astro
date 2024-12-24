@@ -9,10 +9,7 @@ import SignUpForm from '@/components/SignUpForm.astro'
 
 <Layout>
   <main x-data="app" class="absolute inset-0 z-10">
-    <article>
-      <h1 class="sr-only">Diz Toba</h1>
-      <Links />
-    </article>
+    <Links />
     <template x-if="signUpForm">
       <template x-teleport="body">
         <Dialog static :initial-focus="$refs.email">

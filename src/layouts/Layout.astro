@@ -1,4 +1,8 @@
 ---
+import { SEO } from 'astro-seo'
+
+import { site } from '@/constants'
+
 import '@/styles/main.css'
 ---
 
@@ -7,10 +11,36 @@ import '@/styles/main.css'
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Diz Toba</title>
+    <SEO
+      title={site.name}
+      description={site.description}
+      openGraph={{
+        basic: {
+          title: site.name,
+          type: 'A type.',
+          image: site.image.secure_url,
+        },
+      }}
+      twitter={{
+        creator: '@jonasmerlins1',
+      }}
+      extend={{
+        // extending the default link tags
+        link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+        // extending the default meta tags
+        meta: [
+          {
+            name: 'twitter:image',
+            content: site.image.secure_url,
+          },
+          { name: 'twitter:title', content: site.name },
+          // { name: 'twitter:description', content: 'Agent' },
+        ],
+      }}
+    />
   </head>
   <body>
+    <pre>{JSON.stringify(site)}</pre>
     <slot />
   </body>
 </html>
