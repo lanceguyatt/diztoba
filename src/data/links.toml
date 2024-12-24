@@ -1,111 +1,95 @@
 [[links]]
-id = 'spotify'
-name = 'Spotify'
+id = 'listen'
+name = 'Listen'
 url = 'https://open.spotify.com/user/31yv6cm66nebsp7uwmwih6ywm4lm?si=23a456b8dd0e46d1'
-image = 'deaf.png'
-icon = 'listen'
+image = 'listen.png'
 
 [[links]]
 id = 'vimeo'
 name = 'Vimeo'
 url = 'https://vimeo.com'
-image = 'eye.png'
-icon = 'eye'
+image = 'visual.png'
 
 [[links]]
 id = 'comment'
 name = 'Comment'
 url = '#'
-image = 'speech-bubble.png'
-icon = 'comment'
+image = 'comment.png'
 
 [[links]]
 id = 'message'
 name = 'Message'
 url = 'mailto:diztoba@gmail.com'
-image = 'email.png'
-icon = 'mail'
+image = 'mail.png'
 
 [[links]]
 id = 'record-store'
 name = 'Record Store'
 url = '#'
-image = 'vinyl.png'
-icon = 'vinyl'
+image = 'store.png'
 
 [[links]]
 id = 'merch-store'
 name = 'Merch store'
 url = '#'
-image = 't-shirt.png'
-icon = 'tshirt'
+image = 'merch.png'
 
 [[links]]
 id = 'donate'
 name = 'Donate'
 url = '#'
-image = 'heart.png'
-icon = 'donate'
+image = 'donate.png'
 
 [[links]]
 id = 'events'
 name = 'Events'
 url = '#'
-image = 'calendar.png'
-icon = 'calendar'
+image = 'events.png'
 
 [[links]]
 id = 'instagram'
 name = 'Instagram'
-url = 'https://www.instagram.com/diztoba/'
+url = 'https://www.instagram.com/diztoba'
 image = 'instagram.png'
-icon = 'instagram'
 
 [[links]]
 id = 'youtube'
 name = 'YouTube'
 url = 'https://www.youtube.com/@diztoba'
 image = 'youtube.png'
-icon = 'youtube'
 
 [[links]]
 id = 'facebook'
 name = 'Facebook'
 url = 'https://www.facebook.com/diz.toba'
 image = 'facebook.png'
-icon = 'facebook'
 
 [[links]]
-id = 'twitter'
-name = 'Twitter'
-url = 'https://twitter.com'
-image = 'twitter.png'
-icon = 'twitter'
+id = 'x'
+name = 'X'
+url = 'https://x.com/dtoba'
+image = 'x.png'
 
 [[links]]
-id = 'spotify2'
-name = 'Spotify2'
+id = 'spotify'
+name = 'Spotify'
 url = 'https://open.spotify.com/user/31yv6cm66nebsp7uwmwih6ywm4lm?si=23a456b8dd0e46d1'
 image = 'spotify.png'
-icon = 'spotify'
 
 [[links]]
 id = 'soundcloud'
 name = 'Soundcloud'
 url = 'https://soundcloud.com/diztoba'
 image = 'soundcloud.png'
-icon = 'soundcloud'
 
 [[links]]
 id = 'bandcamp'
 name = 'Bandcamp'
 url = 'https://bandcamp.com'
 image = 'bandcamp.png'
-icon = 'bandcamp'
 
 [[links]]
 id = 'patreon'
 name = 'Patreon'
 url = 'https://patreon.com'
 image = 'patreon.png'
-icon = 'patreon'

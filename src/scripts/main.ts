@@ -37,12 +37,12 @@ function App() {
         .catch((error) => console.error(error))
     },
     init() {
-      console.log('this.userSignedUp', this.userSignedUp)
+      // console.log('this.userSignedUp', this.userSignedUp)
       const userSignedUp = JSON.parse(localStorage.getItem('_x_userSignedUp'))
 
       if (userSignedUp?.initialValue) {
         this.signUpForm = false
-        console.log('userSignedUp', userSignedUp.initialValue)
+        // console.log('userSignedUp', userSignedUp.initialValue)
       }
     },
   }

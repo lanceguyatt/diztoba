@@ -14,14 +14,18 @@ import SignUpForm from '@/components/SignUpForm.astro'
       <Links />
     </article>
     <template x-if="signUpForm">
-      <Dialog static :initial-focus="$refs.email">
-        <DialogOverlay />
-        <div class="relative flex min-h-screen items-center justify-center p-6">
-          <DialogPanel>
-            <SignUpForm />
-          </DialogPanel>
-        </div>
-      </Dialog>
+      <template x-teleport="body">
+        <Dialog static :initial-focus="$refs.email">
+          <DialogOverlay />
+          <div
+            class="relative flex min-h-screen items-center justify-center p-6"
+          >
+            <DialogPanel>
+              <SignUpForm />
+            </DialogPanel>
+          </div>
+        </Dialog>
+      </template>
     </template>
   </main>
 </Layout>
