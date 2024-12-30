@@ -1,6 +1,5 @@
 import { z } from 'astro:content'
-
-const { SITE } = import.meta.env
+import { SITE } from "astro:env/client"
 
 export const siteSchema = z.object({
   name: z.string(),

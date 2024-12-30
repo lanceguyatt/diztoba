@@ -4,48 +4,36 @@ import { getCollection } from 'astro:content'
 const allLinks = await getCollection('links')
 ---
 
-<div
-  class="fixed inset-0 grid h-screen w-screen place-items-center overflow-hidden"
->
-  <div class="absolute inset-0 z-10 grid place-items-center">
-    <div class="mx-auto w-full max-w-lg px-4">
-      <article>
-        <h1 class="sr-only">Diz Toba</h1>
-        <nav class="grid grid-cols-4 gap-4">
-          {
-            allLinks.map(({ data }) => {
-              const { name, url, image } = data
-              return (
-                <a
-                  href={url}
-                  target="_blank"
-                  class:list={['outline-0']}
-                  title={name}
-                >
-                  <div class="aspect-square">
-                    <div class="sr-only">{name}</div>
-                    <img
-                      src={`/images/links/${image}`}
-                      width={512}
-                      height={512}
-                      alt={`${name} logo`}
-                      class="h-full w-full"
-                      loading="eager"
-                    />
-                  </div>
-                </a>
-              )
-            })
-          }
-        </nav>
-      </article>
-    </div>
-  </div>
-
-  <iframe
-    src="https://player.vimeo.com/video/507939847?loop=1&badge=0&controls=0&autoplay=1&muted=1&autopause=0&player_id=0&app_id=58479"
-    allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-    title="Radial Light"
-    class="absolute top-1/2 left-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-250"
-  ></iframe>
+<div class="overflow-y absolute inset-0 z-10 grid place-items-center">
+  <article class="mx-auto w-full max-w-lg px-4">
+    <h1 class="sr-only">Diz Toba</h1>
+    <nav class="grid grid-cols-4" data-links>
+      {
+        allLinks.map(({ data }) => {
+          const { name, url, image } = data
+          return (
+            <a href={url} target="_blank" class="outline-0" title={name}>
+              <div class="aspect-square">
+                <div class="sr-only">{name}</div>
+                <img
+                  src={`/images/links/${image}`}
+                  width={512}
+                  height={512}
+                  alt={`${name} logo`}
+                  class="h-full w-full"
+                  loading="eager"
+                />
+              </div>
+            </a>
+          )
+        })
+      }
+    </nav>
+  </article>
 </div>
+
+<style>
+  [data-links] {
+    gap: clamp(0.75rem, calc(0.75rem + ((1vw - 0.2rem) * 6.25)), 1.5rem);
+  }
+</style>
