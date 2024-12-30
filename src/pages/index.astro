@@ -8,9 +8,8 @@ import SignUpForm from '@/components/SignUpForm.astro'
 ---
 
 <Layout>
-  <main x-data="app" class="absolute inset-0 overflow-hidden">
+  <main x-data="app" class="">
     <Links />
-
     <template x-if="signUpForm">
       <template x-teleport="body">
         <Dialog static :initial-focus="$refs.email">
@@ -25,12 +24,5 @@ import SignUpForm from '@/components/SignUpForm.astro'
         </Dialog>
       </template>
     </template>
-
-    <iframe
-      src="https://player.vimeo.com/video/507939847?loop=1&badge=0&controls=0&autoplay=1&muted=1&autopause=0&player_id=0&app_id=58479"
-      allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-      title="Radial Light"
-      class="absolute top-1/2 left-1/2 z-0 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-250"
-    ></iframe>
   </main>
 </Layout>

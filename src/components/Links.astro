@@ -4,8 +4,8 @@ import { getCollection } from 'astro:content'
 const allLinks = await getCollection('links')
 ---
 
-<div class="overflow-y absolute inset-0 z-10 grid place-items-center">
-  <article class="mx-auto w-full max-w-lg px-4">
+<article class="grid h-screen w-screen place-items-center overflow-y-auto">
+  <div class="mx-auto w-full max-w-lg p-4">
     <h1 class="sr-only">Diz Toba</h1>
     <nav class="grid grid-cols-4" data-links>
       {
@@ -29,8 +29,8 @@ const allLinks = await getCollection('links')
         })
       }
     </nav>
-  </article>
-</div>
+  </div>
+</article>
 
 <style>
   [data-links] {
