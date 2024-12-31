@@ -11,6 +11,9 @@ export default defineConfig({
       SITE: envField.string({ context: 'client', access: 'public' }),
     },
   },
+  // image: {
+  //   service: passthroughImageService(),
+  // },
   site: 'https://diztoba.com',
   integrations: [
     alpine({

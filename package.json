@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "check": "astro check",
     "astro": "astro"
   },
   "dependencies": {
@@ -27,8 +28,8 @@
     "prettier": "3.4.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.9",
+    "sharp": "^0.33.5",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss": "4.0.0-beta.4",
-    "toml": "^3.0.0"
+    "tailwindcss": "4.0.0-beta.4"
   }
 }

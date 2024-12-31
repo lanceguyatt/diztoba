@@ -1,0 +1,45 @@
+---
+import { site } from '@/constants'
+import { getCollection } from 'astro:content'
+import { Image } from 'astro:assets'
+
+const socials = await getCollection('socials')
+socials.sort((a, b) => a.data.order - b.data.order)
+---
+
+<div class="relative z-10 grid place-items-center overflow-y-auto">
+  <nav>
+    <h1 class="sr-only">{site.name}</h1>
+    <ul class="mx-auto grid max-w-4xl grid-cols-4" data-component="socials">
+      {
+        socials.map(({ data }) => {
+          const { name, url, image } = data
+          return (
+            <li>
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="outline-0"
+                title={name}
+              >
+                <div class="aspect-square">
+                  <div class="sr-only">{name}</div>
+                  {image && (
+                    <Image
+                      src={image}
+                      width={512}
+                      height={512}
+                      alt={`${name} logo`}
+                      class="h-full w-full"
+                    />
+                  )}
+                </div>
+              </a>
+            </li>
+          )
+        })
+      }
+    </ul>
+  </nav>
+</div>

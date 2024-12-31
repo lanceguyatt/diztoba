@@ -5,10 +5,6 @@
 }
 
 @layer base {
-  html {
-    @apply scroll-smooth;
-  }
-
   body {
     text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
@@ -17,6 +13,23 @@
 }
 
 @layer components {
+  [x-data='app'] {
+    min-height: 100dvh;
+  }
+
+  [data-component='socials'] {
+    padding: clamp(0.75rem, calc(0.75rem + ((1vw - 0.2rem) * 6.25)), 1.5rem);
+    gap: clamp(0.75rem, calc(0.75rem + ((1vw - 0.2rem) * 6.25)), 1.5rem);
+  }
+
+  [data-component='video'] {
+    @apply absolute h-full w-full overflow-hidden;
+    inset: 0;
+  }
+
+  [data-component='video'] > iframe {
+    @apply relative top-1/2 left-1/2 z-0 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-250;
+  }
 }
 
 [x-cloak] {

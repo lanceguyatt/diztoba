@@ -1,18 +1,15 @@
-import { file } from 'astro/loaders'
+import { glob } from 'astro/loaders'
 import { defineCollection, z } from 'astro:content'
-import { parse as parseToml } from 'toml'
 
-const links = defineCollection({
-  loader: file('src/data/links.toml', {
-    parser: (text) => parseToml(text).links,
-  }),
-  schema: z.object({
-    id: z.string(),
-    icon: z.string().optional(),
-    image: z.string().optional(),
-    name: z.string(),
-    url: z.string(),
-  }),
+const socials = defineCollection({
+  loader: glob({ pattern: ['**/*.md'], base: 'src/content/socials' }),
+  schema: ({ image }) =>
+    z.object({
+      order: z.number().optional(),
+      name: z.string(),
+      url: z.string().optional(),
+      image: image().optional(),
+    }),
 })
 
-export const collections = { links }
+export const collections = { socials }

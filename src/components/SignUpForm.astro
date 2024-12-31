@@ -10,7 +10,7 @@ import DialogOverlay from '@/components/dialog/DialogOverlay.astro'
       <DialogOverlay />
       <div class="relative flex min-h-screen items-center justify-center p-6">
         <DialogPanel>
-          <div class="relative w-80 flex-none bg-white p-4 md:w-160">
+          <div class="relative w-80 flex-none bg-white p-6 md:w-160">
             <form
               hidden
               name="signUp"
@@ -22,12 +22,7 @@ import DialogOverlay from '@/components/dialog/DialogOverlay.astro'
             </form>
             <form x-on:submit.prevent="submitSignUpForm" id="signUp">
               <fieldset class="grid gap-4 sm:grid-cols-[1fr_auto]">
-                <h2
-                  x-dialog:title
-                  class="text-center font-semibold sm:col-span-2"
-                >
-                  Sign up for updates
-                </h2>
+                <h2 x-dialog:title class="sr-only">Sign up for updates</h2>
 
                 <p hidden>
                   <label>Ignore: <input name="bot-field" /></label>
