@@ -1,0 +1,32 @@
+---
+
+---
+
+<div id="video"></div>
+
+<style is:global>
+  #video {
+    @apply absolute h-full w-full overflow-hidden;
+    inset: 0;
+  }
+
+  #video > iframe {
+    @apply relative top-1/2 left-1/2 z-0 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-250;
+  }
+</style>
+
+<script>
+  import Player from '@vimeo/player'
+
+  const options = {
+    id: 507939847,
+    background: true,
+    width: 640,
+  }
+
+  const player = new Player('video', options)
+
+  player.on('play', function () {
+    console.log('played the video!')
+  })
+</script>

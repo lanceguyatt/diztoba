@@ -1,39 +1,39 @@
 ---
+import { site } from '@/constants'
 import { getCollection } from 'astro:content'
 
 const allLinks = await getCollection('links')
 ---
 
-<article class="grid h-screen w-screen place-items-center overflow-y-auto">
-  <div class="mx-auto w-full max-w-lg p-4">
-    <h1 class="sr-only">Diz Toba</h1>
-    <nav class="grid grid-cols-4" data-links>
-      {
-        allLinks.map(({ data }) => {
-          const { name, url, image } = data
-          return (
-            <a href={url} target="_blank" class="outline-0" title={name}>
-              <div class="aspect-square">
-                <div class="sr-only">{name}</div>
-                <img
-                  src={`/images/links/${image}`}
-                  width={512}
-                  height={512}
-                  alt={`${name} logo`}
-                  class="h-full w-full"
-                  loading="eager"
-                />
-              </div>
-            </a>
-          )
-        })
-      }
-    </nav>
-  </div>
-</article>
+<div class="relative z-10 grid place-items-center overflow-y-auto">
+  <nav class="mx-auto grid max-w-4xl grid-cols-4" data-links>
+    <h1 class="sr-only">{site.name}</h1>
+    {
+      allLinks.map(({ data }) => {
+        const { name, url, image } = data
+        return (
+          <a href={url} target="_blank" class="outline-0" title={name}>
+            <div class="aspect-square">
+              <div class="sr-only">{name}</div>
+              <img
+                src={`/images/links/${image}`}
+                width={512}
+                height={512}
+                alt={`${name} logo`}
+                class="h-full w-full"
+                loading="eager"
+              />
+            </div>
+          </a>
+        )
+      })
+    }
+  </nav>
+</div>
 
 <style>
   [data-links] {
+    padding: clamp(1rem, calc(1rem + ((1vw - 0.2rem) * 6.25)), 2rem);
     gap: clamp(0.75rem, calc(0.75rem + ((1vw - 0.2rem) * 6.25)), 1.5rem);
   }
 </style>

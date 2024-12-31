@@ -1,43 +1,61 @@
 ---
-
+import Dialog from '@/components/dialog/Dialog.astro'
+import DialogPanel from '@/components/dialog/DialogPanel.astro'
+import DialogOverlay from '@/components/dialog/DialogOverlay.astro'
 ---
 
-<div class="relative w-80 flex-none bg-white p-4 md:w-160">
-  <form
-    hidden
-    name="signUp"
-    method="post"
-    data-netlify="true"
-    netlify-honeypot="bot-field"
-  >
-    <label><input type="email" name="email" /></label>
-  </form>
-  <form x-on:submit.prevent="submitSignUpForm" id="signUp">
-    <fieldset class="grid gap-4 sm:grid-cols-[1fr_auto]">
-      <h2 x-dialog:title class="text-center font-semibold sm:col-span-2">
-        Sign up for updates
-      </h2>
+<template x-if="signUpForm">
+  <template x-teleport="body">
+    <Dialog static :initial-focus="$refs.email">
+      <DialogOverlay />
+      <div class="relative flex min-h-screen items-center justify-center p-6">
+        <DialogPanel>
+          <div class="relative w-80 flex-none bg-white p-4 md:w-160">
+            <form
+              hidden
+              name="signUp"
+              method="post"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+            >
+              <label><input type="email" name="email" /></label>
+            </form>
+            <form x-on:submit.prevent="submitSignUpForm" id="signUp">
+              <fieldset class="grid gap-4 sm:grid-cols-[1fr_auto]">
+                <h2
+                  x-dialog:title
+                  class="text-center font-semibold sm:col-span-2"
+                >
+                  Sign up for updates
+                </h2>
 
-      <p hidden>
-        <label>Ignore: <input name="bot-field" /></label>
-      </p>
+                <p hidden>
+                  <label>Ignore: <input name="bot-field" /></label>
+                </p>
 
-      <input type="hidden" name="form-name" value="signUp" />
+                <input type="hidden" name="form-name" value="signUp" />
 
-      <label for="email" class="sr-only">Your email</label>
+                <label for="email" class="sr-only">Your email</label>
 
-      <input
-        type="email"
-        id="email"
-        name="email"
-        x-ref="email"
-        x-model="formData.email"
-        required
-        placeholder="Enter your email address"
-        class="w-full"
-      />
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  x-ref="email"
+                  x-model="formData.email"
+                  required
+                  placeholder="Enter your email address"
+                  class="w-full"
+                />
 
-      <button type="submit" class="bg-black p-4 text-white">Sign up</button>
-    </fieldset>
-  </form>
-</div>
+                <button type="submit" class="bg-black p-4 text-white"
+                  >Sign up</button
+                >
+              </fieldset>
+            </form>
+          </div>
+        </DialogPanel>
+      </div>
+    </Dialog>
+  </template>
+</template>

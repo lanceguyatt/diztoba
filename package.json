@@ -20,6 +20,7 @@
     "@tailwindcss/vite": "4.0.0-beta.4",
     "@trivago/prettier-plugin-sort-imports": "^5.2.0",
     "@types/alpinejs": "^3.13.11",
+    "@vimeo/player": "^2.25.0",
     "alpinejs": "^3.14.8",
     "astro-seo": "^0.8.4",
     "clsx": "^2.1.1",
