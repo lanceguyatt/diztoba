@@ -1,5 +1,5 @@
 ---
 order: 6
 name: Merch store
-image: '/images/merch.png'
+image: './images/merch.png'
 ---
