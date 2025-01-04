@@ -1,5 +1,5 @@
 ---
 order: 16
 name: Patreon
-image: ./images/patreon.png
+image: '/images/patreon.png'
 ---

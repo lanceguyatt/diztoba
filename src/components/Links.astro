@@ -1,7 +1,7 @@
 ---
 import { site } from '@/constants'
 import { getCollection } from 'astro:content'
-import { Image } from 'astro:assets'
+// import { Image } from 'astro:assets'
 
 const socials = await getCollection('socials')
 socials.sort((a, b) => a.data.order - b.data.order)
@@ -26,7 +26,7 @@ socials.sort((a, b) => a.data.order - b.data.order)
                 <div class="aspect-square">
                   <div class="sr-only">{name}</div>
                   {image && (
-                    <Image
+                    <img
                       src={image}
                       width={512}
                       height={512}

@@ -1,5 +1,6 @@
 ---
 order: 7
 name: Donate
-image: './images/donate.png'
+url: http://paypal.me/dtoba
+image: '/images/donate.png'
 ---
