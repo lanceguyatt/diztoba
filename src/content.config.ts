@@ -7,7 +7,7 @@ const socials = defineCollection({
     z.object({
       order: z.number(),
       name: z.string(),
-      url: z.string(),
+      url: z.string().optional(),
       image: image(),
     }),
 })
