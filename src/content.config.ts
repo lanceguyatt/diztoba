@@ -5,9 +5,9 @@ const socials = defineCollection({
   loader: glob({ pattern: ['**/*.md'], base: 'src/content/socials' }),
   schema: ({ image }) =>
     z.object({
-      order: z.number().optional(),
+      order: z.number(),
       name: z.string(),
-      url: z.string().optional(),
+      url: z.string(),
       image: image(),
     }),
 })

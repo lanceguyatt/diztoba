@@ -30,22 +30,53 @@ import DialogOverlay from '@/components/dialog/DialogOverlay.astro'
 
                 <input type="hidden" name="form-name" value="signUp" />
 
-                <label for="email" class="sr-only">Your email</label>
+                <label for="email" class="sr-only">Your email address</label>
 
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  x-ref="email"
-                  x-model="formData.email"
-                  required
-                  placeholder="Enter your email address"
-                  class="w-full"
-                />
+                <div class="relative border-2">
+                  <div class="absolute top-0 left-0 p-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      class="h-6 w-6"
+                      ><path
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        d="M3.75 5.25 3 6v12l.75.75h16.5L21 18V6l-.75-.75H3.75Zm.75 2.446v9.554h15V7.695L12 14.514 4.5 7.696Zm13.81-.946H5.69L12 12.486l6.31-5.736Z"
+                        clip-rule="evenodd"></path></svg
+                    >
+                  </div>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    x-ref="email"
+                    x-model="formData.email"
+                    required
+                    class="h-full w-full border-transparent pl-10"
+                  />
+                </div>
 
-                <button type="submit" class="bg-black p-4 text-white"
-                  >Sign up</button
+                <button
+                  type="submit"
+                  class="grid cursor-pointer place-content-center bg-black p-2 text-white"
+                  aria-label="Sign up"
                 >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    class="h-6 w-6"
+                    viewBox="0 0 24 24"
+                    ><path
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      d="m9 19-5-5 5-5m9-5v10H5"></path></svg
+                  >
+                </button>
               </fieldset>
             </form>
           </div>

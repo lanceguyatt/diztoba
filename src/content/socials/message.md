@@ -1,6 +1,6 @@
 ---
 order: 4
-name: Message'
+name: Message
 url: mailto:diztoba@gmail.com
 image: './images/mail.png'
 ---

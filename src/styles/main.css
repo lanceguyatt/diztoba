@@ -31,6 +31,10 @@
   [data-component='video'] > iframe {
     @apply relative top-1/2 left-1/2 z-0 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-150;
   }
+
+  input[type='submit'] {
+    @apply rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700;
+  }
 }
 
 [x-cloak] {

@@ -10,7 +10,7 @@ socials.sort((a, b) => a.data.order - b.data.order)
 <div class="relative z-10 grid place-items-center overflow-y-auto">
   <nav>
     <h1 class="sr-only">{site.name}</h1>
-    <ul class="mx-auto grid max-w-xl grid-cols-4" data-component="socials">
+    <ul class="mx-auto grid max-w-lg grid-cols-4" data-component="socials">
       {
         socials.map(({ data }) => {
           const { name, url, image } = data
@@ -20,21 +20,17 @@ socials.sort((a, b) => a.data.order - b.data.order)
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="outline-0"
+                class:list={['outline-0', !url && 'pointer-events-none']}
                 title={name}
               >
-                <div class="aspect-square">
-                  <div class="sr-only">{name}</div>
-                  {image && (
-                    <Image
-                      src={image}
-                      width={512}
-                      height={512}
-                      alt={`${name} logo`}
-                      class="h-full w-full"
-                    />
-                  )}
-                </div>
+                <span class="sr-only">{name}</span>
+                <Image
+                  src={image}
+                  width={512}
+                  height={512}
+                  alt={`${name} logo`}
+                  class="aspect-square h-full w-full"
+                />
               </a>
             </li>
           )
