@@ -1,0 +1,24 @@
+---
+import Layout from '@/layouts/Layout.astro'
+
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map(event => ({
+    params: { id: event.id },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+const { Content } = await render(event);
+---
+<Layout>
+  <article class="py-10">
+    <div class="container mx-auto">
+      <h1>{event.data.startDate}</h1>
+      <Content />
+    </div>
+  </article>
+</Layout>
