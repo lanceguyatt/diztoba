@@ -1,8 +1,11 @@
-@import 'tailwindcss';
-@plugin '@tailwindcss/forms';
+@layer theme, base, components, utilities;
 
-@theme {
-}
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
 
 @layer base {
   body {
@@ -24,8 +27,7 @@
   }
 
   [data-component='video'] {
-    @apply absolute h-full w-full overflow-hidden;
-    inset: 0;
+    @apply absolute h-full w-full overflow-hidden inset-0;
   }
 
   [data-component='video'] > iframe {
