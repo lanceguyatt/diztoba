@@ -2,16 +2,19 @@
 import { site } from '@/constants'
 import { getCollection } from 'astro:content'
 import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
 
-import cover from '@/images/venom-and-lemonade.jpg'
+import cover from '@/assets/images/venom-and-lemonade.jpg'
 
 const socials = await getCollection('nav')
 socials.sort((a, b) => a.data.order - b.data.order)
 ---
 
 
-<div class="grid gap-6 place-items-center">
-  <Image src={cover} width="600" height="600" alt="Cover of Venom & Lemonade" />
+<div class="container border mx-auto">
+
+  <Image src={cover} width="600" height="600" alt="Cover of Venom & Lemonade" class="mx-auto" />
+  <Icon name="logos/soundcloud" />
   <nav>
     <ul class="mx-auto flex gap-4 flex-wrap">
       {

@@ -12,7 +12,8 @@
     "sync": "astro sync"
   },
   "dependencies": {
-    "astro": "7.4.2"
+    "astro": "7.4.2",
+    "astro-icon": "^1.2.0"
   },
   "devDependencies": {
     "@alpinejs/focus": "^3.17.5",

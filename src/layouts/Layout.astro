@@ -2,6 +2,7 @@
 import { SEO } from 'astro-seo'
 import { site } from '@/constants'
 import '@/styles/main.css'
+import { Font } from "astro:assets";
 
 type Props = {
   class?: string
@@ -15,6 +16,7 @@ const { class: className } = Astro.props
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <Font cssVariable="--font-axiforma" />
     <SEO
       title={site.name}
       description={site.description}
