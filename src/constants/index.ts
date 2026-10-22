@@ -1,5 +1,5 @@
-import { z } from 'astro/zod'
-import { SITE } from 'astro:env/client'
+import { z } from "astro/zod";
+import { SITE } from "astro:env/client";
 
 export const siteSchema = z.object({
   name: z.string(),
@@ -8,14 +8,14 @@ export const siteSchema = z.object({
   image: z.object({
     secure_url: z.string(),
   }),
-})
+});
 
 export const site = siteSchema.parse({
-  name: 'Diz Toba',
+  name: "Diz Toba",
   description:
-    'Discover London-based singer-songwriter, performer and musician and explore his unique blend of music and performance.',
+    "Discover London-based singer-songwriter, performer and musician and explore his unique blend of music and performance.",
   url: SITE,
   image: {
-    secure_url: 'https://diztoba.com/logo.jpg',
+    secure_url: "https://diztoba.com/logo.jpg",
   },
-})
+});
