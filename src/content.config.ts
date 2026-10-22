@@ -1,5 +1,6 @@
 import { glob } from 'astro/loaders'
-import { defineCollection, z } from 'astro:content'
+import { z } from 'astro/zod'
+import { defineCollection } from 'astro:content'
 
 export const eventSchema = z.object({
   name: z.string(),
@@ -12,13 +13,12 @@ export const eventSchema = z.object({
     addressRegion: z.string(),
   }),
   startDate: z.date(),
-  flyer: z.string().optional(),  
+  flyer: z.string().optional(),
 })
 
 const events = defineCollection({
   loader: glob({ pattern: ['**/*.md'], base: 'src/data/events' }),
   schema: eventSchema,
-    
 })
 
 const nav = defineCollection({
@@ -32,6 +32,5 @@ const nav = defineCollection({
       external: z.boolean().optional(),
     }),
 })
-
 
 export const collections = { events, nav }
