@@ -23,14 +23,12 @@ const events = defineCollection({
 
 const nav = defineCollection({
   loader: glob({ pattern: ["**/*.md"], base: "src/content/nav" }),
-  schema: ({ image }) =>
-    z.object({
-      order: z.number(),
-      name: z.string(),
-      url: z.string().optional(),
-      image: image(),
-      external: z.boolean().optional(),
-    }),
+  schema: z.object({
+    order: z.number(),
+    name: z.string(),
+    url: z.string().optional(),
+    external: z.boolean().optional(),
+  }),
 });
 
 export const collections = { events, nav };
