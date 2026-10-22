@@ -1,17 +1,8 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import SignUpForm from '@/components/SignUpForm.astro'
-import Links from '@/components/Links.astro'
-import Video from '@/components/Video.astro'
+import { Home } from '@/features/home'
 ---
 
 <Layout>
-  <div
-    x-data="app"
-    class="relative flex w-full flex-col items-center justify-center"
-  >
-    <SignUpForm />
-    <Links />
-    <Video />
-  </div>
+  <Home />
 </Layout>

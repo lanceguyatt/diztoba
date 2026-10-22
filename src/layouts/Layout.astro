@@ -1,8 +1,6 @@
 ---
 import { SEO } from 'astro-seo'
-
 import { site } from '@/constants'
-
 import '@/styles/main.css'
 
 type Props = {
@@ -47,7 +45,9 @@ const { class: className } = Astro.props
       }}
     />
   </head>
-  <body class:list={className}>
+  <body class:list={[className]}>
+    <main>
     <slot />
+    </main>
   </body>
 </html>

@@ -14,7 +14,7 @@ const { model, class: className, ...props } = Astro.props
   x-dialog
   x-model={model}
   x-cloak
-  static
+  static={true}
   :initial-focus="$refs.email"
   class:list={[cn('fixed inset-0 z-10', className)]}
   {...props}
