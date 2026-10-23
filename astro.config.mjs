@@ -25,6 +25,7 @@ export default defineConfig({
       include: {
         // 'entypo-social': ['instagram', 'soundcloud', 'youtube'],
         logos: ['instagram', 'soundcloud', 'youtube'],
+        'thesvg-color': ['*'],
       },
     }),
   ],

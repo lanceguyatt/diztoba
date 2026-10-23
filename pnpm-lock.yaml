@@ -36,6 +36,9 @@ importers:
       '@iconify-json/logos':
         specifier: ^1.2.17
         version: 1.2.17
+      '@iconify-json/thesvg-color':
+        specifier: ^1.2.19
+        version: 1.2.19
       '@tailwindcss/forms':
         specifier: ^0.5.11
         version: 0.5.11(tailwindcss@4.3.3)
@@ -504,6 +507,9 @@ packages:
 
   '@iconify-json/logos@1.2.17':
     resolution: {integrity: sha512-ruCr6y5h8FW+loXwRJkz+6cJj3njyX5Ccpi+ifMgaWZPbTSCbsCccNyGomZxIdhoyDKNOmNdZuURC3tyBvDr7A==}
+
+  '@iconify-json/thesvg-color@1.2.19':
+    resolution: {integrity: sha512-/96WAwrDdbAAaA64cbgcAEFjkmy0JuxwfeL8J6jgxiNSwEA0D1g7M5HF4Y6i8WKieq/Hw6SGv14Fos0B+LKfTQ==}
 
   '@iconify/tools@5.0.14':
     resolution: {integrity: sha512-wJ4ZE3/HZh2iBqLwG+8FOMHe7CMJAJqwSXZSpPwMdj1gZM3Z4t2hbQMVw4Vm45oQ985qn0g89PUIcDEdKTheBA==}
@@ -3296,6 +3302,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/logos@1.2.17':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/thesvg-color@1.2.19':
     dependencies:
       '@iconify/types': 2.0.0
 

@@ -7,7 +7,15 @@ import { site } from '@/constants'
 
 <article class="text-center">
   <div class="container">
-    <Image src={cover} width={600} height={600} alt="Cover of Venom & Lemonade" class="mx-auto" />
+    <Image
+      src={cover}
+      width={600}
+      height={600}
+      alt="Cover of Venom & Lemonade"
+      densities={[1.5, 2]}
+      class="mx-auto"
+      priority
+    />
 
     <nav class="mt-6">
       <ul class="flex flex-wrap justify-center gap-4">
