@@ -25,3 +25,7 @@
 [x-cloak] {
   @apply hidden;
 }
+
+@utility container {
+  @apply mx-auto px-6;
+}

@@ -21,7 +21,12 @@ export default defineConfig({
     alpine({
       entrypoint: '/src/scripts/main',
     }),
-    icon(),
+    icon({
+      include: {
+        // 'entypo-social': ['instagram', 'soundcloud', 'youtube'],
+        logos: ['instagram', 'soundcloud', 'youtube'],
+      },
+    }),
   ],
   fonts: [
     {
@@ -31,12 +36,12 @@ export default defineConfig({
       options: {
         variants: [
           {
-            src: ['./src/assets/fonts/Axiforma-Regular.woff2'],
+            src: ['./src/fonts/Axiforma-Regular.woff2'],
             weight: 'normal',
             style: 'normal',
           },
           {
-            src: ['./src/assets/fonts/Axiforma-SemiBold.woff2'],
+            src: ['./src/fonts/Axiforma-SemiBold.woff2'],
             weight: 'semibold',
             style: 'normal',
           },

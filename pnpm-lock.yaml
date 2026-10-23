@@ -30,6 +30,12 @@ importers:
       '@astrojs/check':
         specifier: ^0.9.12
         version: 0.9.12(@emnapi/runtime@1.11.3)(prettier@3.9.10)(typescript@6.0.3)
+      '@iconify-json/entypo-social':
+        specifier: ^1.2.3
+        version: 1.2.3
+      '@iconify-json/logos':
+        specifier: ^1.2.17
+        version: 1.2.17
       '@tailwindcss/forms':
         specifier: ^0.5.11
         version: 0.5.11(tailwindcss@4.3.3)
@@ -492,6 +498,12 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@iconify-json/entypo-social@1.2.3':
+    resolution: {integrity: sha512-bElykASATvhofbhceBs3cg9OOt5X4nb0I4KtpYgtG3yRRtAURRCPvRu0X3IafDA6CnuRBLGF36tssCU2Tm0ysw==}
+
+  '@iconify-json/logos@1.2.17':
+    resolution: {integrity: sha512-ruCr6y5h8FW+loXwRJkz+6cJj3njyX5Ccpi+ifMgaWZPbTSCbsCccNyGomZxIdhoyDKNOmNdZuURC3tyBvDr7A==}
 
   '@iconify/tools@5.0.14':
     resolution: {integrity: sha512-wJ4ZE3/HZh2iBqLwG+8FOMHe7CMJAJqwSXZSpPwMdj1gZM3Z4t2hbQMVw4Vm45oQ985qn0g89PUIcDEdKTheBA==}
@@ -3278,6 +3290,14 @@ snapshots:
 
   '@esbuild/win32-x64@0.27.4':
     optional: true
+
+  '@iconify-json/entypo-social@1.2.3':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/logos@1.2.17':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify/tools@5.0.14':
     dependencies:

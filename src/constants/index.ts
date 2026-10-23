@@ -8,6 +8,13 @@ export const siteSchema = z.object({
   image: z.object({
     secure_url: z.string(),
   }),
+  socials: z.array(
+    z.object({
+      name: z.string(),
+      url: z.url(),
+      icon: z.string(),
+    }),
+  ),
 })
 
 export const site = siteSchema.parse({
@@ -18,4 +25,21 @@ export const site = siteSchema.parse({
   image: {
     secure_url: 'https://diztoba.com/logo.jpg',
   },
+  socials: [
+    {
+      name: 'Instagram',
+      icon: 'logos:instagram',
+      url: 'https://www.instagram.com/diztoba',
+    },
+    {
+      name: 'Soundcloud',
+      icon: 'logos:soundcloud',
+      url: 'https://www.instagram.com/diztoba',
+    },
+    {
+      name: 'Youtube',
+      icon: 'logos:youtube',
+      url: 'https://www.instagram.com/diztoba',
+    },
+  ],
 })
