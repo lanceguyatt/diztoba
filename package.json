@@ -28,16 +28,16 @@
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "4.3.3",
     "@types/alpinejs": "^3.17.0",
+    "@types/node": "^26.6.5",
     "@vimeo/player": "^2.30.4",
     "alpinejs": "^3.17.5",
     "astro-icon": "^1.2.0",
     "astro-seo": "^1.2.0",
     "clsx": "^2.1.1",
-    "eslint-plugin-astro": "^3.2.1",
     "sharp": "^0.35.5",
     "tailwind-merge": "^3.7.0",
     "tailwindcss": "4.3.3",
     "typescript": "^6.0.3",
-    "vite-plus": "catalog:"
+    "vite-plus": "^1.4.0"
   }
 }

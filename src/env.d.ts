@@ -13,3 +13,7 @@ declare module '@vimeo/player'
 // interface ImportMeta {
 //   readonly env: ImportMetaEnv
 // }
+declare module '*.astro' {
+  const Component: (props: Record<string, any>) => any
+  export default Component
+}
