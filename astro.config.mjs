@@ -1,8 +1,7 @@
+import { defineConfig, envField, fontProviders } from 'astro/config'
 import alpine from '@astrojs/alpinejs'
 import partytown from '@astrojs/partytown'
 import tailwindcss from '@tailwindcss/vite'
-import { defineConfig, envField, fontProviders } from 'astro/config'
-
 import icon from 'astro-icon'
 
 export default defineConfig({

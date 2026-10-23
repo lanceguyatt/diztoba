@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite-plus'
 import { fileURLToPath } from 'node:url'
+import { defineConfig } from 'vite-plus'
 
 export default defineConfig({
   staged: {
@@ -15,6 +15,19 @@ export default defineConfig({
     semi: false,
     printWidth: 100,
     sortPackageJson: true,
+    sortImports: {
+      newlinesBetween: false,
+      customGroups: [{ groupName: 'astro', elementNamePattern: ['astro', 'astro:*', 'astro/**'] }],
+      groups: [
+        'builtin',
+        'astro',
+        'external',
+        ['internal', 'subpath'],
+        ['parent', 'sibling', 'index'],
+        'style',
+        'unknown',
+      ],
+    },
     sortTailwindcss: {
       functions: ['clsx', 'tv'],
     },
