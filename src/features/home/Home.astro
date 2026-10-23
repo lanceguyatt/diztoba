@@ -3,6 +3,7 @@ import cover from '@/images/venom-and-lemonade.jpg'
 import { Image } from 'astro:assets'
 import { Icon } from 'astro-icon/components'
 import { site } from '@/constants'
+import SoundCloud from '@/components/SoundCloud.astro'
 ---
 
 <article class="text-center">
@@ -13,9 +14,11 @@ import { site } from '@/constants'
       height={600}
       alt="Cover of Venom & Lemonade"
       densities={[1.5, 2]}
-      class="mx-auto"
+      class="mx-auto mb-8 rounded-xl"
       priority
     />
+
+    <SoundCloud />
 
     <nav class="mt-6">
       <ul class="flex flex-wrap justify-center gap-4">
@@ -24,7 +27,7 @@ import { site } from '@/constants'
             <li>
               <a href={social.url} target="_blank" rel="noopener noreferrer" title={social.name}>
                 <span class="sr-only">{social.name}</span>
-                <Icon name={social.icon} size={48} />
+                <Icon name={social.icon} size={24} />
               </a>
             </li>
           )

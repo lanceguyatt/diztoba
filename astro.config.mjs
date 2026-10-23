@@ -30,7 +30,7 @@ export default defineConfig({
     }),
     icon({
       include: {
-        // 'entypo-social': ['instagram', 'soundcloud', 'youtube'],
+        'entypo-social': ['instagram', 'soundcloud', 'youtube'],
         logos: ['instagram', 'soundcloud', 'youtube'],
         'thesvg-color': ['*'],
       },

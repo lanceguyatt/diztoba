@@ -1,0 +1,125 @@
+---
+interface Props {
+  url?: string
+  height?: number
+  color?: string
+  visual?: boolean
+  title?: string
+}
+
+const {
+  url = 'https://soundcloud.com/diztoba/sets/venom_and_lemonade',
+  height = 300,
+  color = '#ff5500',
+  visual = true,
+  title = 'Venom & Lemonade on SoundCloud',
+} = Astro.props
+
+const params = new URLSearchParams({
+  url,
+  color,
+  auto_play: 'false',
+  visual: String(visual),
+  show_comments: 'true',
+  show_user: 'true',
+  show_reposts: 'false',
+  show_teaser: 'true',
+  hide_related: 'true',
+})
+
+const src = `https://w.soundcloud.com/player/?${params}`
+---
+
+<iframe
+  width="100%"
+  {height}
+  allow="autoplay; encrypted-media"
+  {src}
+  {title}
+  class="opacity-0 transition-opacity duration-500"
+  data-soundcloud
+></iframe>
+
+<script>
+  interface SCWidget {
+    bind(event: string, callback: () => void): void
+    getSounds(callback: (sounds: unknown[]) => void): void
+    skip(index: number): void
+    play(): void
+  }
+
+  interface SCGlobal {
+    Widget: ((iframe: HTMLIFrameElement) => SCWidget) & {
+      Events: { READY: string; FINISH: string }
+    }
+  }
+
+  declare global {
+    interface Window {
+      SC?: SCGlobal
+    }
+  }
+
+  const API_URL = 'https://w.soundcloud.com/player/api.js'
+
+  function loadApi(): Promise<SCGlobal> {
+    if (window.SC) return Promise.resolve(window.SC)
+
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = API_URL
+      script.async = true
+      script.onload = () => (window.SC ? resolve(window.SC) : reject())
+      script.onerror = reject
+      document.head.append(script)
+    })
+  }
+
+  function shuffle(length: number): number[] {
+    const order = Array.from({ length }, (_, i) => i)
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[order[i], order[j]] = [order[j], order[i]]
+    }
+    return order
+  }
+
+  function reveal(iframe: HTMLIFrameElement) {
+    iframe.classList.remove('opacity-0')
+  }
+
+  function init(SC: SCGlobal, iframe: HTMLIFrameElement) {
+    const widget = SC.Widget(iframe)
+    let order: number[] = []
+    let position = 0
+
+    widget.bind(SC.Widget.Events.READY, () => {
+      widget.getSounds((sounds) => {
+        order = shuffle(sounds.length)
+        if (order.length) {
+          widget.skip(order[0])
+          widget.play()
+        }
+        reveal(iframe)
+      })
+    })
+
+    widget.bind(SC.Widget.Events.FINISH, () => {
+      if (!order.length) return
+      position++
+      if (position >= order.length) {
+        order = shuffle(order.length)
+        position = 0
+      }
+      widget.skip(order[position])
+    })
+  }
+
+  const iframes = document.querySelectorAll<HTMLIFrameElement>('iframe[data-soundcloud]')
+
+  if (iframes.length) {
+    loadApi()
+      .then((SC) => iframes.forEach((iframe) => init(SC, iframe)))
+      .catch(() => iframes.forEach(reveal))
+  }
+</script>

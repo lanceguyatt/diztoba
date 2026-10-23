@@ -28,17 +28,17 @@ export const site = siteSchema.parse({
   socials: [
     {
       name: 'Instagram',
-      icon: 'thesvg-color:instagram',
+      icon: 'entypo-social:instagram',
       url: 'https://www.instagram.com/diztoba',
     },
     {
       name: 'Soundcloud',
-      icon: 'thesvg-color:soundcloud-light',
+      icon: 'entypo-social:soundcloud',
       url: 'https://www.soundcloud.com/diztoba',
     },
     {
       name: 'Youtube',
-      icon: 'thesvg-color:youtube',
+      icon: 'entypo-social:youtube',
       url: 'https://youtube.com/diztoba',
     },
   ],

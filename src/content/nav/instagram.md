@@ -1,4 +1,0 @@
----
-name: Instagram
-url: https://www.instagram.com/diztoba
----
