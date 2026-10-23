@@ -9,7 +9,6 @@ import cover from '@/assets/images/venom-and-lemonade.jpg'
 const socials = await getCollection('nav')
 ---
 
-
 <article class="grid grid-cols-1 gap-6 text-center">
   <div class="container mx-auto">
     <h1>{site.name}</h1>
@@ -17,28 +16,21 @@ const socials = await getCollection('nav')
     <Image src={cover} width="600" height="600" alt="Cover of Venom & Lemonade" class="mx-auto" />
 
     <div class="flex justify-center">
-    <Icon name="logos/soundcloud" />
+      <Icon name="logos/soundcloud" />
     </div>
 
     <nav>
-      <ul class="mx-auto flex gap-4 flex-wrap justify-center">
-        {
-          socials.map(({ data }) => {
-            const { name, url } = data
-            return (
-              <li>
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={name}
-                >
-                  {name}
-                </a>
-              </li>
-            )
-          })
-        }
+      <ul class="mx-auto flex flex-wrap justify-center gap-4">
+        {socials.map(({ data }) => {
+          const { name, url } = data
+          return (
+            <li>
+              <a href={url} target="_blank" rel="noopener noreferrer" title={name}>
+                {name}
+              </a>
+            </li>
+          )
+        })}
       </ul>
     </nav>
   </div>

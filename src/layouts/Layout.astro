@@ -2,7 +2,7 @@
 import { SEO } from 'astro-seo'
 import { site } from '@/constants'
 import '@/styles/main.css'
-import { Font } from "astro:assets";
+import { Font } from 'astro:assets'
 
 type Props = {
   class?: string
@@ -49,7 +49,7 @@ const { class: className } = Astro.props
   </head>
   <body class:list={[className]}>
     <main>
-    <slot />
+      <slot />
     </main>
   </body>
 </html>
