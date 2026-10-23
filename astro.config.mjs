@@ -43,14 +43,42 @@ export default defineConfig({
       options: {
         variants: [
           {
-            src: ['./src/fonts/Axiforma-Regular.woff2'],
-            weight: 'normal',
+            weight: 400,
             style: 'normal',
+            src: ['./src/fonts/axiforma-regular.woff2'],
           },
           {
-            src: ['./src/fonts/Axiforma-SemiBold.woff2'],
-            weight: 'semibold',
+            weight: 600,
             style: 'normal',
+            src: ['./src/fonts/axiforma-semibold.woff2'],
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
+      name: 'Gotham',
+      cssVariable: '--font-gotham',
+      options: {
+        variants: [
+          {
+            weight: 700,
+            style: 'normal',
+            src: ['./src/fonts/gotham-bold.woff2'],
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
+      name: 'Realbook',
+      cssVariable: '--font-realbook',
+      options: {
+        variants: [
+          {
+            weight: 400,
+            style: 'normal',
+            src: ['./src/fonts/realbook.woff'],
           },
         ],
       },

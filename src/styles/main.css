@@ -21,6 +21,8 @@
 
 @theme inline {
   --font-sans: var(--font-axiforma);
+  --font-display: var(--font-gotham);
+  --font-serif: var(--font-realbook);
 }
 
 @layer components {
