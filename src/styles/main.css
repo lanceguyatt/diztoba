@@ -4,6 +4,8 @@
 @import 'tailwindcss/preflight.css' layer(base);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
+@import 'themes/venom-lemonade.theme.css' layer(theme);
+
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
@@ -12,8 +14,8 @@
     text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: linear-gradient(135deg, rgb(168, 142, 77) 0%, rgb(50, 83, 92) 100%);
     min-height: 100dvh;
+    @apply text-foreground bg-pool;
   }
 }
 

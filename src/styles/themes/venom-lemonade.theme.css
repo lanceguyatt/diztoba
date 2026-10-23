@@ -1,0 +1,81 @@
+/* Venom & Lemonade — Tailwind v4 theme (import after `@import "tailwindcss";`) */
+@theme {
+  /* Lemon — title script, lemonade, lemon wedge */
+  --color-lemon-50: #fffbe6;
+  --color-lemon-100: #fff4bf;
+  --color-lemon-200: #fde98a;
+  --color-lemon-300: #fbe164; /* lemonade highlight */
+  --color-lemon-400: #f7d66d;
+  --color-lemon-500: #e1c11f; /* title lettering */
+  --color-lemon-600: #eebb28; /* lemon rind */
+  --color-lemon-700: #b88f12;
+  --color-lemon-800: #8a6a0e;
+  --color-lemon-900: #5c460a;
+  --color-lemon-950: #2e2305;
+
+  /* Riviera — the deep sky */
+  --color-riviera-50: #e8f3f7;
+  --color-riviera-100: #c6e1ea;
+  --color-riviera-200: #93c4d4;
+  --color-riviera-300: #52909b; /* hazy horizon */
+  --color-riviera-400: #2a7a95;
+  --color-riviera-500: #0c6786; /* mid sky */
+  --color-riviera-600: #075b7a;
+  --color-riviera-700: #065271; /* upper sky */
+  --color-riviera-800: #024965; /* top corner */
+  --color-riviera-900: #023347;
+  --color-riviera-950: #011e2a;
+
+  /* Pool — the turquoise water */
+  --color-pool-50: #eaf6f7;
+  --color-pool-100: #cbe9ec;
+  --color-pool-200: #9fd4da;
+  --color-pool-300: #73a091;
+  --color-pool-400: #449ca8; /* sunlit water */
+  --color-pool-500: #27879a; /* pool */
+  --color-pool-600: #196a83; /* open sea */
+  --color-pool-700: #2a6875;
+  --color-pool-800: #1d4c56;
+  --color-pool-900: #133339;
+  --color-pool-950: #0a1c20;
+
+  /* Travertine — the sun-baked pool edge */
+  --color-travertine-50: #fbf5ee;
+  --color-travertine-100: #f6ead9;
+  --color-travertine-200: #efceaa; /* lit stone */
+  --color-travertine-300: #eac29c;
+  --color-travertine-400: #e7c075; /* warm stone */
+  --color-travertine-500: #c99e5c;
+  --color-travertine-600: #a57d45;
+  --color-travertine-700: #7d5e35;
+  --color-travertine-800: #563f24;
+  --color-travertine-900: #322415;
+  --color-travertine-950: #1a120a;
+
+  /* Venom — the snake */
+  --color-venom-50: #eef1f2;
+  --color-venom-100: #d3d9db;
+  --color-venom-200: #a1a59e; /* cloud haze */
+  --color-venom-300: #7a8487;
+  --color-venom-400: #56646a;
+  --color-venom-500: #3c4c52;
+  --color-venom-600: #283a3f; /* shaded wall */
+  --color-venom-700: #1d2b2f;
+  --color-venom-800: #161e1e; /* scale sheen */
+  --color-venom-900: #0e1214;
+  --color-venom-950: #060809; /* snake body */
+
+  /* Semantic aliases */
+  --color-background: var(--color-riviera-800);
+  --color-foreground: var(--color-travertine-50);
+  --color-primary: var(--color-lemon-500);
+  --color-primary-foreground: var(--color-venom-950);
+  --color-secondary: var(--color-pool-500);
+  --color-surface: var(--color-travertine-200);
+  --color-ink: var(--color-venom-950);
+  --color-danger: var(--color-venom-950);
+
+  /* Gradients from the scene */
+  --background-image-sky: linear-gradient(180deg, #024965 0%, #0c6786 55%, #52909b 100%);
+  --background-image-pool: linear-gradient(180deg, #196a83 0%, #27879a 50%, #449ca8 100%);
+}
