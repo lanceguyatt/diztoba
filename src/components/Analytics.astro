@@ -1,0 +1,24 @@
+---
+import { GA_MEASUREMENT_ID as id } from 'astro:env/client'
+
+const enabled = import.meta.env.PROD && id
+---
+
+{enabled && (
+  <>
+    <script
+      is:inline
+      type="text/partytown"
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
+    />
+    <script is:inline type="text/partytown" define:vars={{ id }}>
+      window.dataLayer = window.dataLayer || []
+      window.gtag = function () {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', id)
+    </script>
+  </>
+)}

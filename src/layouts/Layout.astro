@@ -4,6 +4,7 @@ import { site } from '@/constants'
 import '@/styles/main.css'
 import { Font } from 'astro:assets'
 import Header from '@/components/Header.astro'
+import Analytics from '@/components/Analytics.astro'
 
 type Props = {
   class?: string
@@ -47,6 +48,7 @@ const { class: className } = Astro.props
         ],
       }}
     />
+    <Analytics />
   </head>
   <body class:list={[className]}>
     <Header />

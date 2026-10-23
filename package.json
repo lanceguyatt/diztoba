@@ -24,6 +24,7 @@
     "@alpinejs/ui": "^3.17.5",
     "@astrojs/alpinejs": "1.0.0",
     "@astrojs/check": "^0.9.12",
+    "@astrojs/partytown": "^2.1.9",
     "@iconify-json/entypo-social": "^1.2.3",
     "@iconify-json/logos": "^1.2.17",
     "@iconify-json/thesvg-color": "^1.2.19",

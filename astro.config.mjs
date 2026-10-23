@@ -1,4 +1,5 @@
 import alpine from '@astrojs/alpinejs'
+import partytown from '@astrojs/partytown'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig, envField, fontProviders } from 'astro/config'
 
@@ -8,6 +9,7 @@ export default defineConfig({
   env: {
     schema: {
       SITE: envField.string({ context: 'client', access: 'public' }),
+      GA_MEASUREMENT_ID: envField.string({ context: 'client', access: 'public', optional: true }),
     },
   },
   // image: {
@@ -20,6 +22,11 @@ export default defineConfig({
   integrations: [
     alpine({
       entrypoint: '/src/scripts/main',
+    }),
+    partytown({
+      config: {
+        forward: ['dataLayer.push'],
+      },
     }),
     icon({
       include: {

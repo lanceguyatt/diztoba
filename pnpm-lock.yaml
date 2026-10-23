@@ -30,6 +30,9 @@ importers:
       '@astrojs/check':
         specifier: ^0.9.12
         version: 0.9.12(@emnapi/runtime@1.11.3)(prettier@3.9.10)(typescript@6.0.3)
+      '@astrojs/partytown':
+        specifier: ^2.1.9
+        version: 2.1.9
       '@iconify-json/entypo-social':
         specifier: ^1.2.3
         version: 1.2.3
@@ -203,6 +206,9 @@ packages:
 
   '@astrojs/markdown-satteri@0.4.5':
     resolution: {integrity: sha512-0IeGdoFbv0f+442KJhYS44Wg8F3MuHmRsxIEYuFyqkjRubc6dPBFZ7azor5t4AeXLQoT5A5h9HyViKpd70Dl9w==}
+
+  '@astrojs/partytown@2.1.9':
+    resolution: {integrity: sha512-jAywLxinR9XRHH8NB4AOJL0cohFlqX+VWEsC9WUWTWNxfDun774rpi8DMaXPOieGjuAOSkr2BM5ejcdY/eZhsQ==}
 
   '@astrojs/prism@4.1.1':
     resolution: {integrity: sha512-sXlAXJX6t4QfuLg+CuCDzpg7NoxWcyb4paFprgtFppLeisCBmh935h+tJ5CWXfsXEoW2IDy/ihbRMtiu28Chjw==}
@@ -1009,6 +1015,11 @@ packages:
 
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
+
+  '@qwik.dev/partytown@1.0.1':
+    resolution: {integrity: sha512-mLhQw2uxZOpt5mR7FDUfzs0ibSxIf+CFCtA0Ju0tRO1i0p+VxLWs2jklwWho/rHyjayN2XrmP2PFXyYu7uZsbw==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
 
   '@rolldown/binding-android-arm-eabi@1.2.15':
     resolution: {integrity: sha512-aLcgK9gIJ3YRvrrtfSBbRa27F5WrpiTaPulnFpsHPxpUHgFlSgnU4854MHwoRGEBhfRJDWCS2WQ7lIjskE9Olw==}
@@ -3078,6 +3089,11 @@ snapshots:
       github-slugger: 2.0.0
       satteri: 0.10.5
 
+  '@astrojs/partytown@2.1.9':
+    dependencies:
+      '@qwik.dev/partytown': 1.0.1
+      mrmime: 2.0.1
+
   '@astrojs/prism@4.1.1':
     dependencies:
       prismjs: 1.30.0
@@ -3617,6 +3633,8 @@ snapshots:
   '@oxlint/plugins@1.89.0': {}
 
   '@polka/url@1.0.0-next.29': {}
+
+  '@qwik.dev/partytown@1.0.1': {}
 
   '@rolldown/binding-android-arm-eabi@1.2.15':
     optional: true
