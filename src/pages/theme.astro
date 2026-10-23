@@ -1,0 +1,244 @@
+---
+import Layout from '@/layouts/Layout.astro'
+
+const steps = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950']
+
+const palettes = [
+  {
+    name: 'lemon',
+    classes: [
+      'bg-lemon-50',
+      'bg-lemon-100',
+      'bg-lemon-200',
+      'bg-lemon-300',
+      'bg-lemon-400',
+      'bg-lemon-500',
+      'bg-lemon-600',
+      'bg-lemon-700',
+      'bg-lemon-800',
+      'bg-lemon-900',
+      'bg-lemon-950',
+    ],
+  },
+  {
+    name: 'riviera',
+    classes: [
+      'bg-riviera-50',
+      'bg-riviera-100',
+      'bg-riviera-200',
+      'bg-riviera-300',
+      'bg-riviera-400',
+      'bg-riviera-500',
+      'bg-riviera-600',
+      'bg-riviera-700',
+      'bg-riviera-800',
+      'bg-riviera-900',
+      'bg-riviera-950',
+    ],
+  },
+  {
+    name: 'pool',
+    classes: [
+      'bg-pool-50',
+      'bg-pool-100',
+      'bg-pool-200',
+      'bg-pool-300',
+      'bg-pool-400',
+      'bg-pool-500',
+      'bg-pool-600',
+      'bg-pool-700',
+      'bg-pool-800',
+      'bg-pool-900',
+      'bg-pool-950',
+    ],
+  },
+  {
+    name: 'travertine',
+    classes: [
+      'bg-travertine-50',
+      'bg-travertine-100',
+      'bg-travertine-200',
+      'bg-travertine-300',
+      'bg-travertine-400',
+      'bg-travertine-500',
+      'bg-travertine-600',
+      'bg-travertine-700',
+      'bg-travertine-800',
+      'bg-travertine-900',
+      'bg-travertine-950',
+    ],
+  },
+  {
+    name: 'venom',
+    classes: [
+      'bg-venom-50',
+      'bg-venom-100',
+      'bg-venom-200',
+      'bg-venom-300',
+      'bg-venom-400',
+      'bg-venom-500',
+      'bg-venom-600',
+      'bg-venom-700',
+      'bg-venom-800',
+      'bg-venom-900',
+      'bg-venom-950',
+    ],
+  },
+]
+
+const tokens = [
+  { name: 'background', class: 'bg-background text-foreground' },
+  { name: 'foreground', class: 'bg-foreground text-ink' },
+  { name: 'primary', class: 'bg-primary text-primary-foreground' },
+  { name: 'primary-foreground', class: 'bg-primary-foreground text-primary' },
+  { name: 'secondary', class: 'bg-secondary text-foreground' },
+  { name: 'surface', class: 'bg-surface text-ink' },
+  { name: 'ink', class: 'bg-ink text-foreground' },
+  { name: 'danger', class: 'bg-danger text-foreground' },
+]
+
+const gradients = [
+  { name: 'bg-sky', class: 'bg-sky' },
+  { name: 'bg-pool', class: 'bg-pool' },
+]
+
+const fonts = [
+  { name: 'font-sans', class: 'font-sans' },
+  { name: 'font-display', class: 'font-display' },
+  { name: 'font-serif', class: 'font-serif' },
+]
+---
+
+<Layout>
+  <div class="container space-y-16 py-16">
+    <header class="space-y-2">
+      <h1 class="font-display text-primary text-5xl">Venom &amp; Lemonade</h1>
+      <p class="font-serif text-xl">Theme preview: palettes, tokens, gradients, type and forms.</p>
+    </header>
+
+    <section class="space-y-6">
+      <h2 class="font-display text-2xl">Palettes</h2>
+      {palettes.map((palette) => (
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold tracking-wide uppercase">{palette.name}</h3>
+          <div class="grid grid-cols-6 gap-2 md:grid-cols-11">
+            {palette.classes.map((swatch, i) => (
+              <div class="space-y-1">
+                <div class:list={['h-16 rounded-md ring-1 ring-black/10', swatch]} />
+                <p class="text-xs">
+                  {palette.name}-{steps[i]}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <section class="space-y-6">
+      <h2 class="font-display text-2xl">Semantic tokens</h2>
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+        {tokens.map((token) => (
+          <div
+            class:list={['flex h-24 items-end rounded-md p-3 ring-1 ring-black/10', token.class]}
+          >
+            <span class="text-sm font-semibold">{token.name}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      <h2 class="font-display text-2xl">Gradients</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        {gradients.map((gradient) => (
+          <div
+            class:list={['flex h-48 items-end rounded-md p-4 ring-1 ring-black/10', gradient.class]}
+          >
+            <span class="text-sm font-semibold">{gradient.name}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      <h2 class="font-display text-2xl">Typography</h2>
+      <div class="grid gap-8 md:grid-cols-3">
+        {fonts.map((font) => (
+          <div class:list={['space-y-2', font.class]}>
+            <p class="text-xs tracking-wide uppercase opacity-70">{font.name}</p>
+            <h3 class="text-3xl">The quick brown fox</h3>
+            <p>Sun-baked travertine, turquoise water and a lemonade on the edge of the pool.</p>
+          </div>
+        ))}
+      </div>
+      <article class="prose bg-surface text-ink max-w-none rounded-md p-8">
+        <h2>Prose heading</h2>
+        <p>
+          This block uses the <strong>typography plugin</strong>. It includes <a href="#">a link</a>
+          ,<em>emphasis</em> and <code>inline code</code>.
+        </p>
+        <ul>
+          <li>Lemon</li>
+          <li>Riviera</li>
+          <li>Pool</li>
+        </ul>
+        <blockquote>Venom in the shade, lemonade in the sun.</blockquote>
+      </article>
+    </section>
+
+    <section class="space-y-6">
+      <h2 class="font-display text-2xl">Buttons</h2>
+      <div class="flex flex-wrap gap-4">
+        <button
+          type="button"
+          class="bg-primary text-primary-foreground rounded-md px-5 py-2 font-semibold"
+        >
+          Primary
+        </button>
+        <button type="button" class="bg-secondary rounded-md px-5 py-2 font-semibold">
+          Secondary
+        </button>
+        <button type="button" class="border-foreground rounded-md border px-5 py-2 font-semibold">
+          Outline
+        </button>
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      <h2 class="font-display text-2xl">Form</h2>
+      <form class="grid max-w-xl gap-4">
+        <label class="grid gap-1">
+          <span class="text-sm">Name</span>
+          <input type="text" class="text-ink rounded-md" placeholder="Jane Doe" />
+        </label>
+        <label class="grid gap-1">
+          <span class="text-sm">Email</span>
+          <input type="email" class="text-ink rounded-md" placeholder="jane@example.com" />
+        </label>
+        <label class="grid gap-1">
+          <span class="text-sm">Flavour</span>
+          <select class="text-ink rounded-md">
+            <option>Lemon</option>
+            <option>Riviera</option>
+            <option>Pool</option>
+          </select>
+        </label>
+        <label class="grid gap-1">
+          <span class="text-sm">Message</span>
+          <textarea rows="4" class="text-ink rounded-md"></textarea>
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="checkbox" class="text-primary rounded" />
+          <span class="text-sm">Subscribe</span>
+        </label>
+        <button
+          type="submit"
+          class="bg-primary text-primary-foreground justify-self-start rounded-md px-5 py-2 font-semibold"
+        >
+          Submit
+        </button>
+      </form>
+    </section>
+  </div>
+</Layout>
