@@ -70,9 +70,9 @@ export default defineConfig({
   resolve: {
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
   },
-  // test: {
-  //   environment: 'happy-dom',
-  //   environmentOptions: { happyDOM: { url: 'https://www.awin.com/' } },
-  //   include: ['src/**/*.test.ts'],
-  // },
+  test: {
+    environment: 'happy-dom',
+    environmentOptions: { happyDOM: { url: 'https://diztoba.com/' } },
+    include: ['src/**/*.test.ts'],
+  },
 })

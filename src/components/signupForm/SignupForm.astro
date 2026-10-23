@@ -1,0 +1,39 @@
+---
+---
+
+<div class="relative my-10" x-load x-data="signupForm">
+  <form hidden name="signUp" method="post" data-netlify="true" netlify-honeypot="bot-field">
+    <label>
+      <input type="email" name="email" />
+    </label>
+  </form>
+  <form x-on:submit.prevent="submitSignUpForm" id="signUp">
+    <fieldset class="">
+      <h2 class="mb-6">Sign up for updates</h2>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <p hidden>
+          <label>
+            Ignore: <input name="bot-field" />
+          </label>
+        </p>
+
+        <input type="hidden" name="form-name" value="signUp" />
+
+        <input
+          x-ref="email"
+          x-model="formData.email"
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="Email address"
+          aria-label="Email address"
+          class="text-black"
+        />
+
+        <button type="submit">Sign up</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
