@@ -1,0 +1,13 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import DialogClose from './DialogClose.astro'
+
+interface Props extends HTMLAttributes<'div'> {}
+
+const { class: className, ...props } = Astro.props
+---
+
+<div x-dialog:panel x-transition class:list={['relative', className]} {...props}>
+  <slot />
+  <DialogClose />
+</div>
