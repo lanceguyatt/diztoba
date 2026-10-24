@@ -10,6 +10,23 @@ type Props = {
 }
 
 const { class: className } = Astro.props
+
+const webPage = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: site.name,
+  description: site.description,
+  url: new URL(Astro.url.pathname, Astro.site).href,
+  image: site.image.secure_url,
+  inLanguage: 'en',
+  about: {
+    '@type': 'Person',
+    name: site.name,
+    url: Astro.site?.href,
+    image: site.image.secure_url,
+    sameAs: site.socials.map((social) => social.url),
+  },
+}
 ---
 
 <!doctype html>
@@ -49,6 +66,7 @@ const { class: className } = Astro.props
         ],
       }}
     />
+    <script type="application/ld+json" set:html={JSON.stringify(webPage)} />
     <Analytics />
   </head>
   <body class:list={['bg-scene text-foreground min-h-dvh antialiased', className]}>
