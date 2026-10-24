@@ -1,22 +1,32 @@
 # Build Plan
 
-List the features that make up your project, high level and in rough build order.
-Keep each item to one line; the details come later in `/feature`.
-
-Plain bullets are fine. When both planning docs are ready, run `/overview`.
-It adds tracking numbers and checkboxes to your feature list before generating
-the project overview.
+Features in build order, high level. Details come later in `/feature`.
 
 Run `/feature` to spec the next unchecked item, or `/feature 2` to pick one.
 Keep completed items checked and append new features as the project grows.
 Do not renumber completed features; their archived specs refer to those IDs.
 
-Scaffolding the app and prototyping its look are pre-build steps, not features.
-Start with your first real slice of functionality.
+## MVP: Home and mailing list
 
-## Your features
+- [ ] 1. **Latest release on Home** - releases content collection; Home shows the latest release's artwork, listen-on links, embed and a short intro line
+- [ ] 2. **Per-release theming** - Home applies the latest release's theme; `/theme` hidden from visitors in production
+- [ ] 3. **Upcoming gigs on Home** - gigs content collection; Home lists the next few shows, with an empty state that points to the mailing list
+- [ ] 4. **Mailing-list signup on Netlify Forms** - first name and email, honeypot, consent line, in-place success and error states
+- [ ] 5. **Remove analytics** - drop GA4, Partytown and `GA_MEASUREMENT_ID`
+- [ ] 6. **SEO and sharing** - page metadata and Open Graph share image
+- [ ] 7. **Netlify deployment** - build settings, env vars, form detection and the diztoba.com domain
 
-Replace these examples with your own features:
+## Later
 
-- [ ] 1. **Feature one** - description
-- [ ] 2. **Feature two** - description
+Not scheduled. Promote to numbered items when ready.
+
+- Music / releases page
+- Live / gigs page with past-gig archive
+- Videos page
+- About / press kit with booking contact
+- News
+- Mailing-list service with double opt-in
+- Privacy page
+- Analytics with a consent approach
+- Scheduled rebuild for gig dates
+- Merch, lyrics
