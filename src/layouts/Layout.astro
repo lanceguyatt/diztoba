@@ -3,7 +3,6 @@ import { Font } from 'astro:assets'
 import { SEO } from 'astro-seo'
 import '@/styles/main.css'
 import Analytics from '@/components/Analytics.astro'
-import Header from '@/components/Header.astro'
 import { site } from '@/constants'
 
 type Props = {
@@ -17,7 +16,7 @@ const { class: className } = Astro.props
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <Font cssVariable="--font-axiforma" preload />
     <Font cssVariable="--font-gotham" preload />
     <Font cssVariable="--font-realbook" />
@@ -52,10 +51,18 @@ const { class: className } = Astro.props
     />
     <Analytics />
   </head>
-  <body class:list={[className]}>
-    <Header />
-    <main>
+  <body
+    class:list={[
+      'bg-background bg-scene text-foreground min-h-dvh font-sans antialiased',
+      className,
+    ]}
+  >
+    <main class="mx-auto max-w-xl px-6 py-12 text-center">
       <slot />
     </main>
+
+    <footer class="text-foreground-muted px-6 pt-8 pb-12 text-center text-sm">
+      © 2026 {site.name}
+    </footer>
   </body>
 </html>

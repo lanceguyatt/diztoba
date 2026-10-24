@@ -1,41 +1,199 @@
 ---
 import { Image } from 'astro:assets'
-import { Icon } from 'astro-icon/components'
-import { SignupForm } from '@/components/signupForm'
-import SoundCloud from '@/components/SoundCloud.astro'
+// import { Icon } from 'astro-icon/components'
+// import { SignupForm } from '@/components/signupForm'
+// import SoundCloud from '@/components/SoundCloud.astro'
 import { site } from '@/constants'
 import cover from '@/images/venom-and-lemonade.jpg'
 ---
 
-<article class="py-10 text-center">
-  <div class="container">
-    <Image
-      src={cover}
-      width={600}
-      height={600}
-      alt="Cover of Venom & Lemonade"
-      densities={[1.5, 2]}
-      class="mx-auto mb-8 rounded-xl"
-      priority
-    />
+<p class="font-display text-foreground-muted mb-6 text-sm tracking-[0.25em] uppercase">
+  {site.name}
+</p>
 
-    <nav class="mt-6">
-      <ul class="flex flex-wrap justify-center gap-4">
-        {site.socials.map((social) => {
-          return (
-            <li>
-              <a href={social.url} target="_blank" rel="noopener noreferrer" title={social.name}>
-                <span class="sr-only">{social.name}</span>
-                <Icon name={social.icon} size={24} />
-              </a>
-            </li>
-          )
-        })}
-      </ul>
-    </nav>
-
-    <SignupForm />
-
-    <SoundCloud />
+<section aria-labelledby="release-title">
+  <Image
+    src={cover}
+    width={600}
+    height={600}
+    alt="Venom &amp; Lemonade cover: a black snake coiled beside a glass of lemonade at the edge of a turquoise pool"
+    densities={[1.5, 2]}
+    class="shadow-scene aspect-square w-full rounded-xl object-cover"
+    priority
+  />
+  <div class="mt-8">
+    <h1 id="release-title" class="font-display text-4xl leading-tight font-bold">
+      Venom &amp; Lemonade
+    </h1>
+    <p class="text-foreground-muted mt-2 text-sm">New single · Out now</p>
+    <p class="mx-auto mt-6 max-w-md font-serif text-xl leading-snug">
+      Sweet on the tongue, sharp on the way down. A summer song for the ones who bite.
+    </p>
+    <ul class="mt-8 flex flex-wrap justify-center gap-3" aria-label="Listen on">
+      {site.socials.map((social) => (
+        <li>
+          <a
+            class="border-primary bg-primary text-primary-foreground hover:border-primary-hover hover:bg-primary-hover inline-flex items-center rounded-full border-2 px-6 py-3 font-semibold"
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {social.name}
+          </a>
+        </li>
+      ))}
+    </ul>
   </div>
-</article>
+</section>
+
+<!-- <SignupForm /> -->
+<section
+  class="bg-surface text-ink shadow-scene [&amp;_:focus-visible]:outline-ring-surface mt-12 rounded-xl px-6 py-8 text-left"
+  aria-labelledby="gigs-title"
+>
+  <h2 id="gigs-title" class="font-display text-3xl font-bold">
+    Upcoming shows
+  </h2>
+
+  <p
+    class="border-input-border text-ink-muted mt-6 rounded-md border border-dashed p-6 text-center"
+    data-show="gigs-empty"
+  >
+    No shows announced yet.
+    <a href="#signup-title" class="text-ink font-semibold underline">
+      Join the mailing list
+    </a>
+    to hear first.
+  </p>
+
+  <ul class="mt-6 grid gap-3" data-show="gigs-listed" hidden="">
+    <li class="border-border bg-surface-raised grid grid-cols-[4rem_1fr_auto] items-center gap-4 rounded-md border p-4">
+      <time datetime="2026-11-14" class="font-display grid text-center leading-tight">
+        <span class="text-3xl">14</span>
+        <span class="text-ink-muted text-sm tracking-widest uppercase">Nov</span>
+      </time>
+      <div>
+        <p class="font-semibold">The Waiting Room</p>
+        <p class="text-ink-muted text-sm">Stoke Newington, London · Doors 7pm</p>
+      </div>
+      <a
+        class="bg-primary text-primary-foreground hover:bg-primary-hover rounded-full px-4 py-2 text-sm font-semibold"
+        href="#"
+      >
+        Tickets<span class="sr-only"> for The Waiting Room, 14 November</span>
+      </a>
+    </li>
+    <li class="border-border bg-surface-raised grid grid-cols-[4rem_1fr_auto] items-center gap-4 rounded-md border p-4">
+      <time datetime="2026-11-29" class="font-display grid text-center leading-tight">
+        <span class="text-3xl">29</span>
+        <span class="text-ink-muted text-sm tracking-widest uppercase">Nov</span>
+      </time>
+      <div>
+        <p class="font-semibold">Servant Jazz Quarters</p>
+        <p class="text-ink-muted text-sm">Dalston, London · Acoustic set</p>
+      </div>
+      <a
+        class="bg-primary text-primary-foreground hover:bg-primary-hover rounded-full px-4 py-2 text-sm font-semibold"
+        href="#"
+      >
+        Tickets<span class="sr-only"> for Servant Jazz Quarters, 29 November</span>
+      </a>
+    </li>
+    <li class="border-border bg-surface-raised grid grid-cols-[4rem_1fr_auto] items-center gap-4 rounded-md border p-4">
+      <time datetime="2026-12-06" class="font-display grid text-center leading-tight">
+        <span class="text-3xl">6</span>
+        <span class="text-ink-muted text-sm tracking-widest uppercase">Dec</span>
+      </time>
+      <div>
+        <p class="font-semibold">The Lexington</p>
+        <p class="text-ink-muted text-sm">Islington, London</p>
+      </div>
+      <span class="text-ink-muted text-sm">Free entry</span>
+    </li>
+  </ul>
+</section>
+
+<section
+  class="bg-surface text-ink shadow-scene [&amp;_:focus-visible]:outline-ring-surface mt-12 rounded-xl px-6 py-8 text-left"
+  aria-labelledby="signup-title"
+>
+  <h2 id="signup-title" class="font-display text-3xl font-bold">
+    Join the mailing list
+  </h2>
+  <p class="text-ink-muted mt-2">New music, shows and the odd bit of news. No spam.</p>
+
+  <form name="signUp" method="post" class="mt-6 grid gap-4" data-show="form" novalidate="">
+    <p
+      class="bg-danger-surface text-danger rounded-md px-4 py-3 text-sm"
+      role="alert"
+      data-show="error"
+      hidden=""
+    >
+      Please check the highlighted field and try again.
+    </p>
+
+    <p hidden="">
+      <label>
+        Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" />
+      </label>
+    </p>
+
+    <div class="grid gap-1">
+      <label for="firstName" class="text-sm font-semibold">
+        First name
+      </label>
+      <input
+        id="firstName"
+        name="firstName"
+        autocomplete="given-name"
+        value="Amara"
+        class="border-input-border bg-input placeholder:text-input-placeholder w-full rounded-md border px-4 py-3"
+      />
+    </div>
+
+    <div class="grid gap-1">
+      <label for="email" class="text-sm font-semibold">
+        Email address
+      </label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        autocomplete="email"
+        value="amara@gmail"
+        aria-describedby="email-error"
+        class="border-input-border bg-input placeholder:text-input-placeholder aria-[invalid=true]:border-danger w-full rounded-md border px-4 py-3 aria-[invalid=true]:border-2"
+        aria-invalid="false"
+      />
+      <p class="text-danger text-sm" id="email-error" data-show="error" hidden="">
+        Enter an email address like name@example.com
+      </p>
+    </div>
+
+    <p class="text-ink-muted text-sm">
+      By signing up you agree to receive emails from Diz Toba. Unsubscribe at any time.
+    </p>
+
+    <div>
+      <button
+        class="border-primary bg-primary text-primary-foreground hover:border-primary-hover hover:bg-primary-hover inline-flex cursor-pointer items-center rounded-full border-2 px-6 py-3 font-semibold disabled:cursor-progress disabled:opacity-60"
+        type="submit"
+        id="submit"
+      >
+        Sign up
+      </button>
+    </div>
+  </form>
+
+  <div
+    class="bg-success-surface text-success mt-6 rounded-md p-6"
+    role="status"
+    data-show="success"
+    hidden=""
+  >
+    <h3 class="font-display text-xl font-bold">You're on the list</h3>
+    <p class="text-ink mt-2">Thanks, Amara. Look out for the next email from Diz Toba.</p>
+  </div>
+</section>
+
+<!-- <SoundCloud /> -->

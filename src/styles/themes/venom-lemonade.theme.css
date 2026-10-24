@@ -1,4 +1,3 @@
-/* Venom & Lemonade — Tailwind v4 theme (import after `@import "tailwindcss";`) */
 @theme {
   /* Lemon — title script, lemonade, lemon wedge */
   --color-lemon-50: #fffbe6;
@@ -68,14 +67,38 @@
   /* Semantic aliases */
   --color-background: var(--color-riviera-800);
   --color-foreground: var(--color-travertine-50);
+  --color-foreground-muted: var(--color-travertine-100); /* new */
   --color-primary: var(--color-lemon-500);
+  --color-primary-hover: var(--color-lemon-300); /* new */
   --color-primary-foreground: var(--color-venom-950);
   --color-secondary: var(--color-pool-500);
-  --color-surface: var(--color-travertine-200);
+  --color-link: var(--color-lemon-300); /* new, links on the scene */
+  --color-surface: var(--color-travertine-50); /* changed from travertine-200, cards */
+  --color-surface-raised: var(--color-travertine-100); /* new, gig rows */
+  --color-border: var(--color-travertine-200); /* new */
   --color-ink: var(--color-venom-950);
-  --color-danger: var(--color-venom-950);
+  --color-ink-muted: var(--color-venom-500); /* new */
+  --color-ring: var(--color-lemon-300); /* new, focus on the scene */
+  --color-ring-surface: var(--color-riviera-800); /* new, focus on cards */
+  --color-input: #ffffff; /* new */
+  --color-input-border: var(--color-venom-300); /* new */
+  --color-input-placeholder: var(--color-venom-400); /* new */
+  --color-danger: #b42318; /* changed, AA on surface */
+  --color-danger-surface: #fdecea; /* new */
+  --color-success: var(--color-pool-700); /* new, AA on surface */
+  --color-success-surface: #e3f1f2; /* new */
 
   /* Gradients from the scene */
   --background-image-sky: linear-gradient(180deg, #024965 0%, #0c6786 55%, #52909b 100%);
   --background-image-pool: linear-gradient(180deg, #196a83 0%, #27879a 50%, #449ca8 100%);
+  /* new, page background: the sky, deep enough at the bottom for cream text to pass AA */
+  --background-image-scene: linear-gradient(180deg, #024965 0%, #0c6786 60%, #196a83 100%);
+
+  /* new */
+  --shadow-scene: 0 10px 30px rgb(1 30 42 / 0.35); /* riviera-950 */
+
+  /* Fonts — in the app these map from astro:fonts variables in main.css */
+  --font-sans: 'Axiforma', system-ui, sans-serif;
+  --font-display: 'Gotham', 'Axiforma', system-ui, sans-serif;
+  --font-serif: 'Realbook', Georgia, serif;
 }
