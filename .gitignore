@@ -22,3 +22,15 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+.env.*
+!.env.example
+
+# test coverage
+coverage/
+
+# deployment
+.vercel/
+.netlify/
+
+# other logs
+*.log
