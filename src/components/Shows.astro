@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content'
+import { Heading, Button, Card } from '@/components'
+import type { Show } from '@/content.config'
+
+const shows: Show[] = (await getCollection('shows'))
+  .map(({ data }) => data)
+  .sort((a, b) => a.date.getTime() - b.date.getTime())
+
+const formatDay = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric' })
+const formatMonth = (date: Date) => date.toLocaleDateString('en-GB', { month: 'short' })
+const formatLong = (date: Date) =>
+  date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })
+---
+
+<Card as="section" id="upcoming-shows" aria-labelledby="upcoming-shows-title" class="mt-12">
+  <Heading id="upcoming-shows-title">Upcoming shows</Heading>
+
+  {shows.length > 0 ? (
+    <ul class="mt-6 grid gap-3" data-show="gigs-listed">
+      {shows.map(({ name, description, location, date, tickets, freeEntry }) => {
+        const { name: venue, address } = location
+        const details = [address.addressLocality, description, freeEntry && 'Free entry'].filter(
+          Boolean,
+        )
+
+        return (
+          <li class="border-border bg-surface-raised grid grid-cols-[4rem_1fr_auto] items-center gap-4 rounded-md border p-4">
+            <time
+              datetime={date.toISOString().slice(0, 10)}
+              class="font-display grid text-center leading-tight"
+            >
+              <span class="text-3xl">{formatDay(date)}</span>
+              <span class="text-ink-muted text-sm tracking-widest uppercase">
+                {formatMonth(date)}
+              </span>
+            </time>
+
+            <div>
+              <p class="font-semibold">{venue}</p>
+              {name !== venue && <p class="text-sm">{name}</p>}
+              {details.length > 0 && <p class="text-ink-muted text-sm">{details.join(' · ')}</p>}
+            </div>
+
+            {tickets && (
+              <Button size="sm" href={tickets} target="_blank" rel="noopener noreferrer">
+                Tickets
+                <span class="sr-only">
+                  {' '}
+                  for {venue}, {formatLong(date)}
+                </span>
+              </Button>
+            )}
+          </li>
+        )
+      })}
+    </ul>
+  ) : (
+    <p
+      class="border-input-border text-ink-muted mt-6 rounded-md border border-dashed p-6 text-center"
+      data-show="gigs-empty"
+    >
+      No shows announced yet.
+      <a href="#signup-title" class="text-ink font-semibold underline">
+        Join the mailing list
+      </a>
+      to hear first.
+    </p>
+  )}
+</Card>

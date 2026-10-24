@@ -1,0 +1,10 @@
+- id: example-show
+  name: Example Show
+  description: Doors 7pm
+  location:
+    name: The Waiting Room
+    address:
+      addressLocality: London
+  date: 2026-11-14
+  tickets: https://dice.fm/event/q2wbro-blood-red-shoes-29th-oct-village-underground-london-tickets
+  freeEntry: true

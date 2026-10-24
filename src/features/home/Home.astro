@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets'
 import { Heading, Button, Card, SignupForm } from '@/components'
+import UpcomingShows from '@/components/Shows.astro'
 import { site } from '@/constants'
 import cover from '@/images/venom-and-lemonade.jpg'
 ---
@@ -43,59 +44,6 @@ import cover from '@/images/venom-and-lemonade.jpg'
   </div>
 </section>
 
-<Card as="section" id="upcoming-shows" aria-labelledby="upcoming-shows-title" class="mt-12">
-  <Heading id="upcoming-shows-title">Upcoming shows</Heading>
-
-  <!-- <p
-    class="border-input-border text-ink-muted mt-6 rounded-md border border-dashed p-6 text-center"
-    data-show="gigs-empty"
-  >
-    No shows announced yet.
-    <a href="#signup-title" class="text-ink font-semibold underline">
-      Join the mailing list
-    </a>
-    to hear first.
-  </p> -->
-
-  <ul class="mt-6 grid gap-3" data-show="gigs-listed">
-    <li class="border-border bg-surface-raised grid grid-cols-[4rem_1fr_auto] items-center gap-4 rounded-md border p-4">
-      <time datetime="2026-11-14" class="font-display grid text-center leading-tight">
-        <span class="text-3xl">14</span>
-        <span class="text-ink-muted text-sm tracking-widest uppercase">Nov</span>
-      </time>
-      <div>
-        <p class="font-semibold">The Waiting Room</p>
-        <p class="text-ink-muted text-sm">Stoke Newington, London · Doors 7pm</p>
-      </div>
-      <Button size="sm" href="#">
-        Tickets<span class="sr-only"> for The Waiting Room, 14 November</span>
-      </Button>
-    </li>
-    <li class="border-border bg-surface-raised grid grid-cols-[4rem_1fr_auto] items-center gap-4 rounded-md border p-4">
-      <time datetime="2026-11-29" class="font-display grid text-center leading-tight">
-        <span class="text-3xl">29</span>
-        <span class="text-ink-muted text-sm tracking-widest uppercase">Nov</span>
-      </time>
-      <div>
-        <p class="font-semibold">Servant Jazz Quarters</p>
-        <p class="text-ink-muted text-sm">Dalston, London · Acoustic set</p>
-      </div>
-      <Button size="sm" href="#">
-        Tickets<span class="sr-only"> for Servant Jazz Quarters, 29 November</span>
-      </Button>
-    </li>
-    <li class="border-border bg-surface-raised grid grid-cols-[4rem_1fr_auto] items-center gap-4 rounded-md border p-4">
-      <time datetime="2026-12-06" class="font-display grid text-center leading-tight">
-        <span class="text-3xl">6</span>
-        <span class="text-ink-muted text-sm tracking-widest uppercase">Dec</span>
-      </time>
-      <div>
-        <p class="font-semibold">The Lexington</p>
-        <p class="text-ink-muted text-sm">Islington, London</p>
-      </div>
-      <span class="text-ink-muted text-sm">Free entry</span>
-    </li>
-  </ul>
-</Card>
+<UpcomingShows />
 
 <SignupForm />
