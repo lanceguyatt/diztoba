@@ -7,6 +7,7 @@ export const showSchema = z.object({
   description: z.string().optional(),
   location: z.object({
     name: z.string(),
+    url: z.url().optional(),
     address: z.object({
       streetAddress: z.string().optional(),
       extendedAddress: z.string().optional(),
@@ -17,6 +18,11 @@ export const showSchema = z.object({
     }),
   }),
   date: z.coerce.date(),
+  endDate: z.coerce.date().optional(),
+  eventStatus: z
+    .enum(['EventScheduled', 'EventCancelled', 'EventPostponed', 'EventRescheduled'])
+    .default('EventScheduled'),
+  image: z.url().optional(),
   tickets: z.url().optional(),
   freeEntry: z.boolean().optional().default(false),
 })

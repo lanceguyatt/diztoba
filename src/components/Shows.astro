@@ -1,7 +1,9 @@
 ---
 import { getCollection } from 'astro:content'
 import { Heading, Button, Card } from '@/components'
+import { site } from '@/constants'
 import type { Show } from '@/content.config'
+import { toMusicEvent } from '@/utils'
 
 // Start of today, so a show happening today is still listed
 const today = new Date()
@@ -12,29 +14,45 @@ const shows: Show[] = (await getCollection('shows'))
   .filter(({ date }) => date >= today)
   .sort((a, b) => a.date.getTime() - b.date.getTime())
 
-const formatDay = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric' })
-const formatMonth = (date: Date) => date.toLocaleDateString('en-GB', { month: 'short' })
+const statusLabels: Partial<Record<Show['eventStatus'], string>> = {
+  EventCancelled: 'Cancelled',
+  EventPostponed: 'Postponed',
+  EventRescheduled: 'Rescheduled',
+}
+
+const events = shows.map((show) => toMusicEvent(show, { name: site.name, url: site.url }))
+
+// Shows are in London, so format in London time whatever the build machine's zone
+const timeZone = 'Europe/London'
+const formatDay = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', timeZone })
+const formatMonth = (date: Date) => date.toLocaleDateString('en-GB', { month: 'short', timeZone })
+const formatTime = (date: Date) =>
+  date.toLocaleTimeString('en-GB', { hour: 'numeric', minute: '2-digit', timeZone })
 const formatLong = (date: Date) =>
-  date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })
+  date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', timeZone })
 ---
+
+{events.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(events)} />}
 
 <Card as="section" id="upcoming-shows" aria-labelledby="upcoming-shows-title" class="mt-12">
   <Heading id="upcoming-shows-title">Upcoming shows</Heading>
 
   {shows.length > 0 ? (
     <ul class="mt-6 grid gap-3" data-show="gigs-listed">
-      {shows.map(({ name, description, location, date, tickets, freeEntry }) => {
+      {shows.map(({ name, description, location, date, tickets, freeEntry, eventStatus }) => {
         const { name: venue, address } = location
-        const details = [address.addressLocality, description, freeEntry && 'Free entry'].filter(
-          Boolean,
-        )
+        const status = statusLabels[eventStatus]
+        const details = [
+          status,
+          formatTime(date),
+          address.addressLocality,
+          description,
+          freeEntry && 'Free entry',
+        ].filter(Boolean)
 
         return (
           <li class="border-border bg-surface-raised grid grid-cols-[4rem_1fr_auto] items-center gap-4 rounded-md border p-4">
-            <time
-              datetime={date.toISOString().slice(0, 10)}
-              class="font-display grid text-center leading-tight"
-            >
+            <time datetime={date.toISOString()} class="font-display grid text-center leading-tight">
               <span class="text-3xl">{formatDay(date)}</span>
               <span class="text-ink-muted text-sm tracking-widest uppercase">
                 {formatMonth(date)}
@@ -47,7 +65,7 @@ const formatLong = (date: Date) =>
               {details.length > 0 && <p class="text-ink-muted text-sm">{details.join(' · ')}</p>}
             </div>
 
-            {tickets && (
+            {tickets && eventStatus !== 'EventCancelled' && (
               <Button size="sm" href={tickets} target="_blank" rel="noopener noreferrer">
                 Tickets
                 <span class="sr-only">
