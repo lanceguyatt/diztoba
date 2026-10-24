@@ -1,6 +1,37 @@
 ---
+import type { Polymorphic } from 'astro/types'
+import { tv, type VariantProps } from 'tailwind-variants'
+
+const buttonVariants = tv({
+  base: 'inline-flex items-center rounded-full border-2 font-semibold',
+  variants: {
+    intent: {
+      primary:
+        'bg-primary border-primary text-primary-foreground hover:border-primary-hover hover:bg-primary-hover',
+    },
+    size: {
+      sm: 'px-4 py-2 text-sm',
+      base: 'px-6 py-3 text-base',
+    },
+  },
+  defaultVariants: {
+    intent: 'primary',
+    size: 'base',
+  },
+})
+
+type ButtonTag = 'a' | 'button'
+
+type Props<Tag extends ButtonTag = 'a'> = Polymorphic<
+  { as: Tag } & VariantProps<typeof buttonVariants>
+>
+
+const { as: Tag = 'a', intent, size, class: className, ...attrs } = Astro.props
 ---
 
-<a href="">
+<Tag
+  class={buttonVariants({ intent, size, class: className })}
+  {...(attrs as astroHTML.JSX.HTMLAttributes)}
+>
   <slot />
-</a>
+</Tag>
