@@ -51,12 +51,7 @@ const { class: className } = Astro.props
     />
     <Analytics />
   </head>
-  <body
-    class:list={[
-      'bg-background bg-scene text-foreground min-h-dvh font-sans antialiased',
-      className,
-    ]}
-  >
+  <body class:list={['bg-scene text-foreground min-h-dvh font-sans antialiased', className]}>
     <main class="mx-auto max-w-xl px-6 py-12 text-center">
       <slot />
     </main>

@@ -1,0 +1,26 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types'
+import { tv, type VariantProps } from 'tailwind-variants'
+
+const cardVariants = tv({
+  base: 'rounded-xl px-6 py-8 text-left',
+  variants: {
+    intent: {
+      default: 'bg-surface text-ink shadow-scene focus-visible:outline-ring-surface',
+    },
+  },
+  defaultVariants: {
+    intent: 'default',
+  },
+})
+
+type Props<Tag extends HTMLTag = 'div'> = Polymorphic<
+  { as: Tag } & VariantProps<typeof cardVariants>
+>
+
+const { as: Tag = 'div', intent, class: className, ...attrs } = Astro.props
+---
+
+<Tag class={cardVariants({ intent, class: className })} {...attrs}>
+  <slot />
+</Tag>

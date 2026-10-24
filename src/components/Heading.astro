@@ -1,0 +1,28 @@
+---
+import type { Polymorphic } from 'astro/types'
+import { tv, type VariantProps } from 'tailwind-variants'
+
+const headingVariants = tv({
+  base: '',
+  variants: {
+    intent: {
+      default: 'font-display text-3xl font-bold',
+    },
+  },
+  defaultVariants: {
+    intent: 'default',
+  },
+})
+
+type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+
+type Props<Tag extends HeadingTag = 'h2'> = Polymorphic<
+  { as: Tag } & VariantProps<typeof headingVariants>
+>
+
+const { as: Tag = 'h2', intent, class: className, ...attrs } = Astro.props
+---
+
+<Tag class={headingVariants({ intent, class: className })} {...attrs}>
+  <slot />
+</Tag>
