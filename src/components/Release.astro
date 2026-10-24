@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets'
+import { Heading, Button } from '@/components'
+import { site } from '@/constants'
+import cover from '@/images/venom-and-lemonade.jpg'
+---
+
+<section aria-labelledby="release-title">
+  <Image
+    src={cover}
+    width={600}
+    height={600}
+    alt="Venom &amp; Lemonade cover: a black snake coiled beside a glass of lemonade at the edge of a turquoise pool"
+    densities={[1.5, 2]}
+    class="shadow-scene aspect-square w-full rounded-xl object-cover"
+    priority
+  />
+
+  <div class="mt-8">
+    <Heading as="h1" id="release-title" class="text-4xl">
+      Venom &amp; Lemonade
+    </Heading>
+
+    <p class="text-foreground-muted mt-2 text-sm">New single · Out now</p>
+
+    <p class="mx-auto mt-6 max-w-md font-serif text-xl leading-snug text-balance">
+      Sweet on the tongue, sharp on the way down. A summer song for the ones who bite.
+    </p>
+
+    <ul class="mt-8 flex flex-wrap justify-center gap-3" aria-label="Listen on">
+      {site.socials.map((social) => (
+        <li>
+          <Button href={social.url} target="_blank" rel="noopener noreferrer">
+            {social.name}
+          </Button>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

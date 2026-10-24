@@ -1,3 +1,13 @@
+- id: old-show
+  name: Old Show
+  description: Doors 7pm
+  location:
+    name: The Waiting Room
+    address:
+      addressLocality: London
+  date: 2022-10-12
+  tickets: https://dice.fm/event/q2wbro-blood-red-shoes-29th-oct-village-underground-london-tickets
+
 - id: example-show
   name: Example Show
   description: Doors 7pm

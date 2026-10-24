@@ -3,8 +3,13 @@ import { getCollection } from 'astro:content'
 import { Heading, Button, Card } from '@/components'
 import type { Show } from '@/content.config'
 
+// Start of today, so a show happening today is still listed
+const today = new Date()
+today.setHours(0, 0, 0, 0)
+
 const shows: Show[] = (await getCollection('shows'))
   .map(({ data }) => data)
+  .filter(({ date }) => date >= today)
   .sort((a, b) => a.date.getTime() - b.date.getTime())
 
 const formatDay = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric' })
@@ -60,7 +65,7 @@ const formatLong = (date: Date) =>
       class="border-input-border text-ink-muted mt-6 rounded-md border border-dashed p-6 text-center"
       data-show="gigs-empty"
     >
-      No shows announced yet.
+      Currently no upcoming shows.
       <a href="#signup-title" class="text-ink font-semibold underline">
         Join the mailing list
       </a>

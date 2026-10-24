@@ -2,6 +2,7 @@ export default () => {
   return {
     signupForm: true,
     formData: {
+      name: '',
       email: '',
     },
     async submitSignUpForm() {
