@@ -1,5 +1,5 @@
 import { defineConfig, envField, fontProviders } from 'astro/config'
-import alpine from '@astrojs/alpinejs'
+// import alpine from '@astrojs/alpinejs'
 import partytown from '@astrojs/partytown'
 import tailwindcss from '@tailwindcss/vite'
 import icon from 'astro-icon'
@@ -19,9 +19,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [
-    alpine({
-      entrypoint: '/src/scripts/main',
-    }),
+    // alpine({
+    //   entrypoint: '/src/scripts/main',
+    // }),
     partytown({
       config: {
         forward: ['dataLayer.push'],
