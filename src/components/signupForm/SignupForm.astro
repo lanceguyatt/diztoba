@@ -2,14 +2,7 @@
 import { Button, Card, Heading } from '@/components'
 ---
 
-<Card
-  as="section"
-  x-load="eager"
-  x-data="signupForm"
-  class="mt-12"
-  aria-labelledby="signup-title"
-  id="signup"
->
+<Card as="section" class="mt-12" aria-labelledby="signup-title" id="signup" data-signup>
   <Heading id="signup-title">Join the mailing list</Heading>
   <p class="text-ink-muted mt-2">New music, shows and the odd bit of news. No spam.</p>
 
@@ -19,6 +12,7 @@ import { Button, Card, Heading } from '@/components'
     class="mt-6 grid gap-4"
     data-netlify="true"
     netlify-honeypot="bot-field"
+    novalidate
   >
     <p
       class="bg-danger-surface text-danger rounded-md px-4 py-3 text-sm"
@@ -35,28 +29,23 @@ import { Button, Card, Heading } from '@/components'
       </label>
     </p>
 
+    <input type="hidden" name="form-name" value="signUp" />
+
     <div class="grid gap-1">
       <label for="firstName" class="text-sm font-semibold">
         First name
       </label>
       <input
+        aria-invalid="false"
         id="firstName"
         name="firstName"
         autocomplete="given-name"
         value=""
         placeholder="First name"
-        class="border-input-border bg-input placeholder:text-input-placeholder w-full rounded-md border px-4 py-3"
+        class="border-input-border bg-input placeholder:text-input-placeholder aria-invalid:border-danger w-full rounded-md border px-4 py-3 aria-invalid:border-2"
         required
       />
     </div>
-
-    <p hidden>
-      <label>
-        Ignore: <input name="bot-field" />
-      </label>
-    </p>
-
-    <input type="hidden" name="form-name" value="signUp" />
 
     <div class="grid gap-1">
       <label for="email" class="text-sm font-semibold">
@@ -65,7 +54,7 @@ import { Button, Card, Heading } from '@/components'
       <input
         aria-describedby="email-error"
         aria-invalid="false"
-        aria-label="Email address"
+        autocomplete="email"
         class="border-input-border bg-input placeholder:text-input-placeholder aria-invalid:border-danger w-full rounded-md border px-4 py-3 aria-invalid:border-2"
         id="email"
         name="email"
@@ -73,8 +62,6 @@ import { Button, Card, Heading } from '@/components'
         required
         type="email"
         value=""
-        x-model="formData.email"
-        x-ref="email"
       />
       <p class="text-danger text-sm" id="email-error" data-show="error" hidden="">
         Enter an email address like name@example.com
@@ -95,10 +82,19 @@ import { Button, Card, Heading } from '@/components'
   <div
     class="bg-success-surface text-success mt-6 rounded-md p-6"
     role="status"
+    tabindex="-1"
     data-show="success"
     hidden=""
   >
     <h3 class="font-display text-xl font-bold">You're on the list</h3>
-    <p class="text-ink mt-2">Thanks, Amara. Look out for the next email from Diz Toba.</p>
+    <p class="text-ink mt-2">
+      Thanks<span data-signup-name></span>. Look out for the next email from Diz Toba.
+    </p>
   </div>
 </Card>
+
+<script>
+  import initSignupForm from './scripts/signup-form'
+
+  document.querySelectorAll<HTMLElement>('[data-signup]').forEach(initSignupForm)
+</script>

@@ -15,9 +15,7 @@ const setupPlugins = (alpine: AlpineType) => {
 // Async Data Registration
 // ============================================
 const registerAsyncData = (alpine: AlpineType) => {
-  const asyncMap = {
-    signupForm: () => import('../components/signupForm/scripts/signup-form'),
-  }
+  const asyncMap: Record<string, () => Promise<object>> = {}
 
   Object.entries(asyncMap).forEach(([name, importFn]) => {
     alpine.asyncData(name, importFn)

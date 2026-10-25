@@ -1,21 +1,32 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vite-plus/test'
-import signupForm from './signup-form'
+import initSignupForm, { submit, validate } from './signup-form'
 
 const fetchMock = vi.fn()
 
-const getEmailInput = () => document.querySelector<HTMLInputElement>('input[name="email"]')!
+const getRoot = () => document.querySelector<HTMLElement>('[data-signup]')!
+const getForm = () => document.querySelector<HTMLFormElement>('form')!
+const getInput = (name: string) =>
+  document.querySelector<HTMLInputElement>(`input[name="${name}"]`)!
+const getSuccess = () => document.querySelector<HTMLElement>('[data-show="success"]')!
 
 describe('signupForm', () => {
   beforeEach(() => {
     document.body.innerHTML = `
-      <form id="signUp">
-        <input type="hidden" name="form-name" value="signUp" />
-        <input type="email" name="email" />
-      </form>
+      <section data-signup>
+        <form novalidate>
+          <p role="alert" data-show="error" hidden></p>
+          <input type="hidden" name="form-name" value="signUp" />
+          <input name="firstName" aria-invalid="false" required />
+          <input type="email" name="email" aria-invalid="false" aria-describedby="email-error" required />
+          <p id="email-error" data-show="error" hidden></p>
+          <button type="submit">Sign up</button>
+        </form>
+        <div data-show="success" tabindex="-1" hidden>Thanks<span data-signup-name></span>.</div>
+      </section>
     `
-    getEmailInput().value = 'test@example.com'
+    getInput('firstName').value = 'Sam'
+    getInput('email').value = 'test@example.com'
     vi.stubGlobal('fetch', fetchMock)
-    vi.spyOn(console, 'log').mockImplementation(() => {})
     vi.spyOn(console, 'error').mockImplementation(() => {})
   })
 
@@ -26,64 +37,85 @@ describe('signupForm', () => {
     document.body.innerHTML = ''
   })
 
-  it('has the expected initial state', () => {
-    const data = signupForm()
-
-    expect(data.signupForm).toBe(true)
-    expect(data.formData.email).toBe('')
+  it('passes validation when every required field is valid', () => {
+    expect(validate(getForm())).toBe(true)
+    expect(getInput('email').getAttribute('aria-invalid')).toBe('false')
+    expect(document.querySelector('[role="alert"]')!.hasAttribute('hidden')).toBe(true)
   })
 
-  it('does nothing when the form is missing', async () => {
-    document.body.innerHTML = ''
-    const data = signupForm()
+  it('flags an invalid email and shows its error', () => {
+    getInput('email').value = 'not-an-email'
 
-    await expect(data.submitSignUpForm()).resolves.toBeUndefined()
+    expect(validate(getForm())).toBe(false)
+    expect(getInput('email').getAttribute('aria-invalid')).toBe('true')
+    expect(document.querySelector('#email-error')!.hasAttribute('hidden')).toBe(false)
+    expect(document.querySelector('[role="alert"]')!.hasAttribute('hidden')).toBe(false)
+    expect(document.activeElement).toBe(getInput('email'))
+  })
+
+  it('does not post when validation fails', async () => {
+    getInput('firstName').value = ''
+
+    await submit(getRoot(), getForm())
+
     expect(fetchMock).not.toHaveBeenCalled()
+    expect(getInput('firstName').getAttribute('aria-invalid')).toBe('true')
   })
 
   it('posts the encoded form data to Netlify', async () => {
     fetchMock.mockResolvedValue({ ok: true })
-    const data = signupForm()
 
-    await data.submitSignUpForm()
+    await submit(getRoot(), getForm())
 
     expect(fetchMock).toHaveBeenCalledWith('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: 'form-name=signUp&email=test%40example.com',
+      body: 'form-name=signUp&firstName=Sam&email=test%40example.com',
     })
   })
 
-  it('hides the form and resets it on success', async () => {
+  it('hides the form, resets it and shows a personalised success message', async () => {
     fetchMock.mockResolvedValue({ ok: true })
-    const data = signupForm()
 
-    await data.submitSignUpForm()
+    await submit(getRoot(), getForm())
 
-    expect(data.signupForm).toBe(false)
-    expect(getEmailInput().value).toBe('')
+    expect(getForm().hasAttribute('hidden')).toBe(true)
+    expect(getSuccess().hasAttribute('hidden')).toBe(false)
+    expect(getSuccess().textContent).toBe('Thanks, Sam.')
+    expect(getInput('email').value).toBe('')
+    expect(document.activeElement).toBe(getSuccess())
   })
 
   it('logs an error and keeps the form on a non-OK response', async () => {
     fetchMock.mockResolvedValue({ ok: false, statusText: 'Bad Request' })
-    const data = signupForm()
 
-    await data.submitSignUpForm()
+    await submit(getRoot(), getForm())
 
-    expect(data.signupForm).toBe(true)
     expect(console.error).toHaveBeenCalledWith(
       expect.objectContaining({ message: expect.stringContaining('Bad Request') }),
     )
-    expect(vi.mocked(console.error).mock.calls[0][0]).toBeInstanceOf(Error)
-    expect(getEmailInput().value).toBe('test@example.com')
+    expect(getForm().hasAttribute('hidden')).toBe(false)
+    expect(getSuccess().hasAttribute('hidden')).toBe(true)
+    expect(getInput('email').value).toBe('test@example.com')
+    expect(document.querySelector('button')!.disabled).toBe(false)
   })
 
   it('logs an error and keeps the form on a network failure', async () => {
     fetchMock.mockRejectedValue(new TypeError('Failed to fetch'))
-    const data = signupForm()
 
-    await expect(data.submitSignUpForm()).resolves.toBeUndefined()
+    await expect(submit(getRoot(), getForm())).resolves.toBeUndefined()
     expect(console.error).toHaveBeenCalled()
-    expect(data.signupForm).toBe(true)
+    expect(getForm().hasAttribute('hidden')).toBe(false)
+  })
+
+  it('intercepts the native submit', async () => {
+    fetchMock.mockResolvedValue({ ok: true })
+    initSignupForm(getRoot())
+
+    const event = new Event('submit', { cancelable: true })
+    getForm().dispatchEvent(event)
+
+    expect(event.defaultPrevented).toBe(true)
+    await vi.waitFor(() => expect(getSuccess().hasAttribute('hidden')).toBe(false))
   })
 })
