@@ -1,6 +1,7 @@
 import { defineConfig, envField, fontProviders } from 'astro/config'
 // import alpine from '@astrojs/alpinejs'
 import partytown from '@astrojs/partytown'
+import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
 import icon from 'astro-icon'
 
@@ -34,6 +35,7 @@ export default defineConfig({
         'thesvg-color': ['*'],
       },
     }),
+    sitemap(),
   ],
   fonts: [
     {
