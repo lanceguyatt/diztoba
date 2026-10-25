@@ -1,36 +1,53 @@
 ---
+import { type HTMLAttributes } from 'astro/types'
+import { z } from 'astro/zod'
+import '@/styles/main.css'
 import { Font } from 'astro:assets'
 import { SEO } from 'astro-seo'
-import '@/styles/main.css'
 import Analytics from '@/components/Analytics.astro'
-import { site } from '@/constants'
+import { site, dizToba } from '@/constants'
 
-type Props = {
-  class?: string
-}
+export const layoutSchema = z.object({
+  title: z.string().optional(),
+  description: z.string().optional(),
+})
 
-const { class: className } = Astro.props
+type Props = HTMLAttributes<'body'> & z.infer<typeof layoutSchema>
+
+const { title, description = site.description, class: className } = Astro.props
+
+const pageTitle = title ? `${title} | ${site.name}` : site.title
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href
 
 const webPage = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: site.name,
-  description: site.description,
-  url: new URL(Astro.url.pathname, Astro.site).href,
+  name: pageTitle,
+  description,
+  url: pageUrl,
   image: site.image.secure_url,
-  inLanguage: 'en',
+  inLanguage: 'en-GB',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: site.name,
+    url: site.url,
+  },
   about: {
     '@type': 'Person',
-    name: site.name,
-    url: Astro.site?.href,
-    image: site.image.secure_url,
-    sameAs: site.socials.map((social) => social.url),
+    '@id': `${dizToba.url}/#person`,
+    name: dizToba.name,
+    description: dizToba.description,
+    jobTitle: dizToba.jobTitle,
+    homeLocation: { '@type': 'Place', name: dizToba.homeLocation },
+    url: dizToba.url,
+    image: dizToba.image.secure_url,
+    sameAs: dizToba.socials.map((social) => social.url),
   },
 }
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,31 +55,40 @@ const webPage = {
     <Font cssVariable="--font-gotham" preload />
     <Font cssVariable="--font-realbook" />
     <SEO
-      title={site.name}
-      description={site.description}
+      title={pageTitle}
+      {description}
       openGraph={{
         basic: {
-          title: site.name,
-          type: 'A type.',
+          title: pageTitle,
+          type: 'website',
           image: site.image.secure_url,
-          url: site.url,
+          url: pageUrl,
+        },
+        optional: {
+          description,
+          siteName: site.name,
+          locale: site.locale,
+        },
+        image: {
+          secureUrl: site.image.secure_url,
+          type: site.image.type,
+          width: site.image.width,
+          height: site.image.height,
+          alt: site.image.alt,
         },
       }}
       twitter={{
-        creator: '@dtoba',
+        card: 'summary',
+        creator: site.twitter,
+        title: pageTitle,
+        description,
+        image: site.image.secure_url,
+        imageAlt: site.image.alt,
       }}
       extend={{
         link: [
           { rel: 'icon', type: 'image/png', href: '/favicon.png' },
           { rel: 'author', type: 'text/plain', href: '/humans.txt' },
-        ],
-        meta: [
-          {
-            name: 'twitter:image',
-            content: site.image.secure_url,
-          },
-          { name: 'twitter:title', content: site.name },
-          { name: 'twitter:description', content: site.description },
         ],
       }}
     />
