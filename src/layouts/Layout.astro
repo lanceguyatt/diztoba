@@ -1,20 +1,14 @@
 ---
 import { type HTMLAttributes } from 'astro/types'
-import { z } from 'astro/zod'
 import '@/styles/main.css'
 import { Font } from 'astro:assets'
-import { SEO } from 'astro-seo'
+import { SEO, type Props as SEOProps } from 'astro-seo'
 import Analytics from '@/components/Analytics.astro'
 import { site, dizToba } from '@/constants'
 
-export const layoutSchema = z.object({
-  title: z.string().optional(),
-  description: z.string().optional(),
-})
+type Props = HTMLAttributes<'body'> & SEOProps
 
-type Props = HTMLAttributes<'body'> & z.infer<typeof layoutSchema>
-
-const { title, description = site.description, class: className } = Astro.props
+const { title, description = site.description, noindex, nofollow, class: className } = Astro.props
 
 const pageTitle = title ? `${title} | ${site.name}` : site.title
 const pageUrl = new URL(Astro.url.pathname, Astro.site).href
@@ -91,6 +85,8 @@ const webPage = {
           { rel: 'author', type: 'text/plain', href: '/humans.txt' },
         ],
       }}
+      noindex={!!noindex}
+      nofollow={!!nofollow}
     />
     <script type="application/ld+json" set:html={JSON.stringify(webPage)} />
     <Analytics />
