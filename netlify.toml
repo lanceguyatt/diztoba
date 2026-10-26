@@ -1,0 +1,7 @@
+[build]
+command = "pnpm run build"
+publish = "dist"
+
+[build.environment]
+# .env isn't committed, and astro.config.mjs requires SITE at build time
+SITE = "https://diztoba.com"

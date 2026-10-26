@@ -35,7 +35,9 @@ export default defineConfig({
         'thesvg-color': ['*'],
       },
     }),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes('/theme/'),
+    }),
   ],
   fonts: [
     {

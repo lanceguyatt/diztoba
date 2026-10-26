@@ -71,7 +71,7 @@ export const site = webPageSchema.parse({
     {
       name: 'Youtube',
       icon: 'entypo-social:youtube',
-      url: 'https://youtube.com/diztoba',
+      url: 'https://youtube.com/@diztoba',
     },
   ],
 })
