@@ -49,7 +49,7 @@ export const site = webPageSchema.parse({
     'Diz Toba is a London-based singer-songwriter, performer and musician. Listen to new releases, watch videos and find upcoming live shows.',
   url: SITE,
   locale: 'en_GB',
-  twitter: '@dtoba',
+  twitter: 'dtoba',
   image: {
     secure_url: 'https://diztoba.com/logo.jpg',
     alt: 'Diz Toba logo',

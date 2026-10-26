@@ -15,13 +15,16 @@ export const validate = (form: HTMLFormElement) => {
   })
 
   const firstInvalid = fields.find((field) => !field.validity.valid)
-  show(form.querySelector('[role="alert"]'), Boolean(firstInvalid))
+  show(form.querySelector('[role="alert"][data-show="error"]'), Boolean(firstInvalid))
   firstInvalid?.focus()
 
   return !firstInvalid
 }
 
 export const submit = async (root: HTMLElement, form: HTMLFormElement) => {
+  const failure = form.querySelector('[data-show="failure"]')
+  show(failure, false)
+
   if (!validate(form)) return
 
   const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')
@@ -46,6 +49,7 @@ export const submit = async (root: HTMLElement, form: HTMLFormElement) => {
     success?.focus()
   } catch (error) {
     console.error(error)
+    show(failure, true)
   } finally {
     if (button) button.disabled = false
   }

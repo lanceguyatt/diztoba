@@ -8,6 +8,7 @@ const getForm = () => document.querySelector<HTMLFormElement>('form')!
 const getInput = (name: string) =>
   document.querySelector<HTMLInputElement>(`input[name="${name}"]`)!
 const getSuccess = () => document.querySelector<HTMLElement>('[data-show="success"]')!
+const getFailure = () => document.querySelector<HTMLElement>('[data-show="failure"]')!
 
 describe('signupForm', () => {
   beforeEach(() => {
@@ -20,6 +21,7 @@ describe('signupForm', () => {
           <input type="email" name="email" aria-invalid="false" aria-describedby="email-error" required />
           <p id="email-error" data-show="error" hidden></p>
           <button type="submit">Sign up</button>
+          <p role="alert" data-show="failure" hidden></p>
         </form>
         <div data-show="success" tabindex="-1" hidden>Thanks<span data-signup-name></span>.</div>
       </section>
@@ -86,7 +88,7 @@ describe('signupForm', () => {
     expect(document.activeElement).toBe(getSuccess())
   })
 
-  it('logs an error and keeps the form on a non-OK response', async () => {
+  it('shows the failure message and keeps the form on a non-OK response', async () => {
     fetchMock.mockResolvedValue({ ok: false, statusText: 'Bad Request' })
 
     await submit(getRoot(), getForm())
@@ -96,16 +98,38 @@ describe('signupForm', () => {
     )
     expect(getForm().hasAttribute('hidden')).toBe(false)
     expect(getSuccess().hasAttribute('hidden')).toBe(true)
+    expect(getFailure().hasAttribute('hidden')).toBe(false)
     expect(getInput('email').value).toBe('test@example.com')
     expect(document.querySelector('button')!.disabled).toBe(false)
   })
 
-  it('logs an error and keeps the form on a network failure', async () => {
+  it('shows the failure message and keeps the form on a network failure', async () => {
     fetchMock.mockRejectedValue(new TypeError('Failed to fetch'))
 
     await expect(submit(getRoot(), getForm())).resolves.toBeUndefined()
     expect(console.error).toHaveBeenCalled()
+    expect(getFailure().hasAttribute('hidden')).toBe(false)
     expect(getForm().hasAttribute('hidden')).toBe(false)
+  })
+
+  it('hides the failure message when the form is submitted again', async () => {
+    fetchMock.mockRejectedValueOnce(new TypeError('Failed to fetch'))
+    await submit(getRoot(), getForm())
+    expect(getFailure().hasAttribute('hidden')).toBe(false)
+
+    fetchMock.mockResolvedValueOnce({ ok: true })
+    await submit(getRoot(), getForm())
+
+    expect(getFailure().hasAttribute('hidden')).toBe(true)
+    expect(getSuccess().hasAttribute('hidden')).toBe(false)
+  })
+
+  it('keeps the failure message out of validation errors', () => {
+    getInput('email').value = 'not-an-email'
+
+    validate(getForm())
+
+    expect(getFailure().hasAttribute('hidden')).toBe(true)
   })
 
   it('intercepts the native submit', async () => {
